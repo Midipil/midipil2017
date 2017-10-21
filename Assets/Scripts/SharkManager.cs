@@ -9,16 +9,18 @@ public class SharkManager : MonoBehaviour {
     public float corridorWidth = 16f;
     public float zRandom = 1.5f;
     public float startHeight = 30f;
-    public float speed = 10.0f;
-	public float frequency = 5f;  //par secondes
+    public float maxSpeed = 10.0f;
+	public float speed;
+	public float maxFrequency = 5f;  //par secondes
+	public float frequency;
 	public bool isAttacking = false;
-	public float difficulty = 0;
 	float time;
-	// Use this for initialization
-	void Start () {
-		
+
+	void Start()
+	{
+		Start (0.75f);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
@@ -32,19 +34,19 @@ public class SharkManager : MonoBehaviour {
 				time = 0;
 				SpawnShark ();
 			}
-		}
-		
+		}		
 	}
-
-	public void StartAttack(float difficultyLevel)
+		
+	public void Start(float difficultyLevel)
 	{
-		difficulty = difficultyLevel;
+		frequency = maxFrequency * difficultyLevel;
+		speed = maxSpeed * difficultyLevel;
 		isAttacking = true;
 	}
 
-	public void StopAttack()
+	public void Stop()
 	{
-		
+		isAttacking = false;
 	}
 
     public void SpawnShark()
