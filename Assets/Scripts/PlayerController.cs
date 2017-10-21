@@ -108,13 +108,14 @@ public class PlayerController : MonoBehaviour {
         // Compute force
         float force = angle * maxSteeringSpeed / maxAngle;
         // apply
-        rb.AddForce(new Vector3(force, 0, 0));
+        rb.MovePosition(new Vector3(rb.position.x + force * Time.deltaTime, rb.position.y, rb.position.z));
+        //rb.AddForce(new Vector3(force, 0, 0));
     }
 
     private void ApplySpeed()
     {
-        rb.AddForce(new Vector3(0, 0, speedForce));
-        //rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speed*Time.deltaTime));
+        //rb.AddForce(new Vector3(0, 0, speedForce));
+        rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speedForce*Time.deltaTime));
     }
 
     public float GetAngle()

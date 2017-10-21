@@ -48,6 +48,7 @@ public class SharkManager : MonoBehaviour {
 		isAttacking = false;
 	}
 
+	[ContextMenu("SpawnShark")]
 	public void SpawnShark () {
 		// Compute distance
 		float distToTravelShark = startHeight;

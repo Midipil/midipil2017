@@ -9,12 +9,18 @@ public class Shark : MonoBehaviour {
 	public float deathDelay = 10.0f;
 	public ParticleSystem bubbles;
 	public ParticleSystem dustOnGroundHit;
-
+	public AudioClip[] sndClips; // 0;Attack   1;HitGround
+	AudioSource audioSource;
 	private bool hitGround = false;
 	float time;
 	// Use this for initialization
 	void Start () {
 		dustOnGroundHit.Stop ();
+		audioSource = GetComponent<AudioSource> ();
+		if(sndClips != null)
+		audioSource.clip = sndClips [0];
+		audioSource.Play ();
+		audioSource.loop = true;
 	}
 
 	// Update is called once per frame
@@ -26,6 +32,10 @@ public class Shark : MonoBehaviour {
 				hitGround = true;
 				// Emit one burst
 				dustOnGroundHit.Emit ((int)dustOnGroundHit.emission.GetBurst (0).count.constant);
+				// Play Sound Hit Ground
+				audioSource.Stop();
+				if(sndClips != null)
+				audioSource.PlayOneShot(sndClips[1]);
 			}
 			// Shark is in the ground
 			if (bubbles.isEmitting) {

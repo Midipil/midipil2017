@@ -51,16 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a2dd9f921f52a459307d7667a7eb3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   sharkPrefab: {fileID: 1945025193505530, guid: dd94e545b465f774ea3aeeaa3d46fb11,
     type: 2}
   corridorWidth: 16
   zRandom: 1.5
   startHeight: 15
-  speed: 10
-  frequency: 6
+  speed: 5
+  frequency: 4
   isAttacking: 0
-  easySpeed: 7
-  hardSpeed: 18
-  easyFreq: 6
-  hardFreq: 3
+  easySpeed: 5
+  hardSpeed: 16
+  easyFreq: 4
+  hardFreq: 1
