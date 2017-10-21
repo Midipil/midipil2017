@@ -16,6 +16,11 @@ public class SharkManager : MonoBehaviour {
 	public bool isAttacking = false;
 	float time;
 
+	void Start()
+	{
+		player = GameObject.FindGameObjectWithTag ("Player");
+	}
+
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;
