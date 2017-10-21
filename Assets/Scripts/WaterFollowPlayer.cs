@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterFollowPlayer : MonoBehaviour {
 
-	private Player player;
+	private PlayerController player;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class WaterFollowPlayer : MonoBehaviour {
 			Debug.LogError ("Can't find any gameObject with tag \"Player\"");
 			return;
 		}
-		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
+		player = GameObject.FindWithTag ("Player").GetComponent<PlayerController> ();
 		if (player == null) {
 			Debug.LogError ("Player GameObject does not have any \"Player\" component");
 		}
