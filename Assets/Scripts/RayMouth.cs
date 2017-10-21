@@ -6,6 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class RayMouth : MonoBehaviour {
     [System.ComponentModel.DefaultValue(0f)]
+
+    public MicrophoneInput mic;
+    public float micThreshold = 0.5f;
+    
     public float Score
     {
         get;
@@ -17,9 +21,19 @@ public class RayMouth : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        GetGlobalVars();
         Score = 0f;
         _collidedPlanctons.Clear();
 	}
+
+    public void GetGlobalVars()
+    {
+        // Get global vars
+        maxAngle = GlobalVars.Instance.maxAngle;
+        maxSteeringSpeed = GlobalVars.Instance.maxSteeringSpeed;
+        speed = GlobalVars.Instance.speed;
+        hp = GlobalVars.Instance.hp;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -34,10 +48,16 @@ public class RayMouth : MonoBehaviour {
 
     private void Update()
     {
+        GetGlobalVars();
+
         // To later replace with the sound detection
-        if (true)
+        if (mic.loudness > micThreshold)
         {
+            Debug.Log("Loud enough to eat");
             Score += _collidedPlanctons.Count;
+
+            foreach (var go in _collidedPlanctons) Destroy(go);
+
             _collidedPlanctons.Clear();
         }
     }
