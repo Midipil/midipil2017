@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -112,7 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1001 &94922517
@@ -339,8 +338,6 @@ Transform:
 >>>>>>> e9acc287078bccbeab3b83a635dab02e53306444
 =======
 >>>>>>> parent of 36bd5eb... fusion scene
-=======
->>>>>>> parent of e9acc28... Merge branch 'master' of https://github.com/Midipil/midipil2017
 --- !u!1001 &502092213
 Prefab:
   m_ObjectHideFlags: 0
@@ -429,6 +426,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &694691387 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1126487536930448, guid: e8bf1f79a7f50aa468eeb89e361c90d7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1140035990}
 --- !u!1 &1127726294
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +554,6 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
 <<<<<<< HEAD
-<<<<<<< HEAD
     - target: {fileID: 65866334375989026, guid: e8bf1f79a7f50aa468eeb89e361c90d7,
         type: 2}
       propertyPath: m_Enabled
@@ -592,8 +593,6 @@ Prefab:
 >>>>>>> e9acc287078bccbeab3b83a635dab02e53306444
 =======
 >>>>>>> parent of 36bd5eb... fusion scene
-=======
->>>>>>> parent of e9acc28... Merge branch 'master' of https://github.com/Midipil/midipil2017
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8bf1f79a7f50aa468eeb89e361c90d7, type: 2}
   m_IsPrefabParent: 0
@@ -626,7 +625,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
   player: {fileID: 511984480}
 =======
   player: {fileID: 694691387}
@@ -634,9 +632,6 @@ MonoBehaviour:
 =======
   player: {fileID: 0}
 >>>>>>> parent of 36bd5eb... fusion scene
-=======
-  player: {fileID: 0}
->>>>>>> parent of e9acc28... Merge branch 'master' of https://github.com/Midipil/midipil2017
   sharkPrefab: {fileID: 1945025193505530, guid: dd94e545b465f774ea3aeeaa3d46fb11,
     type: 2}
   corridorWidth: 16
@@ -660,7 +655,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &1344065923
@@ -793,8 +787,6 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
-=======
->>>>>>> parent of e9acc28... Merge branch 'master' of https://github.com/Midipil/midipil2017
 --- !u!1 &1629517700
 >>>>>>> e9acc287078bccbeab3b83a635dab02e53306444
 =======
@@ -976,7 +968,6 @@ Prefab:
   m_IsPrefabParent: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!1001 &2144000495
 Prefab:
   m_ObjectHideFlags: 0
@@ -1056,5 +1047,3 @@ Material:
 >>>>>>> e9acc287078bccbeab3b83a635dab02e53306444
 =======
 >>>>>>> parent of 36bd5eb... fusion scene
-=======
->>>>>>> parent of e9acc28... Merge branch 'master' of https://github.com/Midipil/midipil2017
