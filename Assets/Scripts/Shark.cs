@@ -17,6 +17,7 @@ public class Shark : MonoBehaviour {
 	void Start () {
 		dustOnGroundHit.Stop ();
 		audioSource = GetComponent<AudioSource> ();
+		if(sndClips != null)
 		audioSource.clip = sndClips [0];
 		audioSource.Play ();
 		audioSource.loop = true;
@@ -33,6 +34,7 @@ public class Shark : MonoBehaviour {
 				dustOnGroundHit.Emit ((int)dustOnGroundHit.emission.GetBurst (0).count.constant);
 				// Play Sound Hit Ground
 				audioSource.Stop();
+				if(sndClips != null)
 				audioSource.PlayOneShot(sndClips[1]);
 			}
 			// Shark is in the ground
