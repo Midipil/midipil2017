@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     public Transform head, left, right;
     private Rigidbody rb;
@@ -17,11 +17,14 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         GetGlobalVars();
 
         // Set vars
         rb = this.GetComponent<Rigidbody>();
+
+        rb.inertiaTensorRotation = Quaternion.identity;
+        rb.inertiaTensor = Vector3.one;
+        rb.centerOfMass = Vector3.zero;
 
         // Check if left controller is really on the left, if not invert...USELESS ?
         /*
@@ -33,8 +36,8 @@ public class Player : MonoBehaviour {
             Debug.LogWarning("controllers inverted");
         }
         */
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,9 +61,11 @@ public class Player : MonoBehaviour {
             faceDown = false;
         }
 
-        ApplySteering(angle, faceDown);
-        ApplySpeed();
-        
+        if (GameManager.Instance.State == GameManager.GameState.EATING || GameManager.Instance.State == GameManager.GameState.FIGHTING)
+        {
+            ApplySteering(angle, faceDown);
+            ApplySpeed();
+        }  
 	}
     
     public void GetGlobalVars()

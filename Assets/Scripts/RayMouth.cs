@@ -55,10 +55,9 @@ public class RayMouth : MonoBehaviour {
         {
             Debug.Log("Loud enough to eat");
             Score += _collidedPlanctons.Count;
-            foreach(var go in _collidedPlanctons)
-            {
-                Destroy(go);
-            }
+
+            foreach (var go in _collidedPlanctons) Destroy(go);
+
             _collidedPlanctons.Clear();
         }
     }
