@@ -22,9 +22,15 @@ public class PlayerController : MonoBehaviour {
         // Set vars
         rb = this.GetComponent<Rigidbody>();
 
+<<<<<<< HEAD
        // rb.inertiaTensorRotation = Quaternion.identity;
        // rb.inertiaTensor = Vector3.one;
        // rb.centerOfMass = Vector3.zero;
+=======
+        //rb.inertiaTensorRotation = Quaternion.identity;
+        //rb.inertiaTensor = Vector3.one;
+        //rb.centerOfMass = Vector3.zero;
+>>>>>>> e9acc287078bccbeab3b83a635dab02e53306444
 
         // Check if left controller is really on the left, if not invert...USELESS ?
         /*
@@ -38,9 +44,9 @@ public class PlayerController : MonoBehaviour {
         */
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         GetGlobalVars();
 
