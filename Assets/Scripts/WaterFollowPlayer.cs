@@ -22,7 +22,7 @@ public class WaterFollowPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (player != null) {
-			transform.position.Set (player.head.position.x, transform.position.y, player.head.position.z);
+			transform.position = new Vector3 (player.transform.position.x, transform.position.y, player.transform.position.z);
 		}
 	}
 }
