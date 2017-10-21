@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 4579175929291428}
   - component: {fileID: 33569274227303454}
   - component: {fileID: 23705591678618340}
+  - component: {fileID: 114211778063864380}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -1509,3 +1510,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821006284940678}
   m_Mesh: {fileID: 4300000, guid: 2df3d9f1dbb82cc4b8859f8e9a07b748, type: 3}
+--- !u!114 &114211778063864380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313675359219616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9c2a2f3ed838546b3eff3034e3543c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weight: 0.5
+  _planctonPrefab: {fileID: 1056061484688912, guid: 641e6c059e97f4f44a2739e3c8dc4603,
+    type: 2}

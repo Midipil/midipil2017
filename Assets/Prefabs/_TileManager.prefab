@@ -52,9 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilesPrefab:
-  - {fileID: 114645625278057310, guid: 0919a21b9caa441afb974e4424ccd521, type: 2}
-  - {fileID: 114680766844527122, guid: 34523553fb0151d4e84456385d3ac234, type: 2}
-  - {fileID: 114634378933668262, guid: ced0ca24c6fb25b4c85e13874c4154f1, type: 2}
+  - {fileID: 114211778063864380, guid: 0919a21b9caa441afb974e4424ccd521, type: 2}
+  - {fileID: 114123558352856382, guid: b58456099b9d5ec4684997aedaca7285, type: 2}
+  - {fileID: 114923891968195344, guid: 36789b078d9a27f4b8029a48b437ac9d, type: 2}
+  - {fileID: 114691830344293764, guid: fe2bb9526dea12f46bd7dad4bea08de8, type: 2}
+  - {fileID: 114534269253134820, guid: 9675baaa56aa6164596b0ca96fe8430c, type: 2}
   tilesObj: []
-  frontView: 250
+  tileSize: 31.92
+  frontView: 100
   backView: 100
