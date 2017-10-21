@@ -11,6 +11,7 @@ public class WaterFollowPlayer : MonoBehaviour {
 		GameObject playerGo = GameObject.FindWithTag ("Player");
 		if (playerGo == null) {
 			Debug.LogError ("Can't find any gameObject with tag \"Player\"");
+			return;
 		}
 		player = GameObject.FindWithTag ("Player").GetComponent<Player> ();
 		if (player == null) {
@@ -21,8 +22,7 @@ public class WaterFollowPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (player != null) {
-			transform.position.x = player.head.position.x;
-			transform.position.z = player.head.position.z;
+			transform.position.Set (player.head.position.x, transform.position.y, player.head.position.z);
 		}
 	}
 }
