@@ -22,11 +22,7 @@ public class SharkManager : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 
-<<<<<<< HEAD
 		Start (0.8f);
-=======
-		//Start (0.8f);
->>>>>>> parent of e9acc28... Merge branch 'master' of https://github.com/Midipil/midipil2017
 	}
 
 	// Update is called once per frame
