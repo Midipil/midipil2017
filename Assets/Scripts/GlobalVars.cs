@@ -17,6 +17,7 @@ public class GlobalVars : Singleton<GlobalVars> {
     public float planctonDensity = 0.5f;
     // Eating
     public float micThreshold = 0.5f;
+    public bool voiceCheat = false;
 
     // Game Controller
     public float completeDifficultyCompletionTime = 60f * 10;
