@@ -21,8 +21,6 @@ public class SharkManager : MonoBehaviour {
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag ("Player");
-
-		Start (0.8f);
 	}
 
 	// Update is called once per frame
