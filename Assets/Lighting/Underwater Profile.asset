@@ -29,7 +29,7 @@ MonoBehaviour:
     m_Settings:
       excludeSkybox: 0
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       method: 0
       fxaaSettings:
@@ -120,23 +120,23 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: -0.34
-        temperature: 5.7
+        postExposure: 0.24
+        temperature: -11.4
         tint: 0
-        hueShift: -7
-        saturation: 1.086
-        contrast: 1.095
+        hueShift: -9
+        saturation: 1.21
+        contrast: 1.057
       channelMixer:
-        red: {x: 1, y: 0.06, z: 0}
-        green: {x: 0.17, y: 0.92, z: 0.13}
-        blue: {x: 0.07, y: 0.22, z: 0.67}
+        red: {x: 1.13, y: -0.02, z: -0.06}
+        green: {x: 0.15, y: 0.71, z: 0.19}
+        blue: {x: 0.05, y: 0.18, z: 0.73}
         currentEditingChannel: 2
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0.9526693, g: 1, b: 1, a: 0}
-          power: {r: 0.8175397, g: 0.763347, b: 1, a: 0}
-          offset: {r: 1, g: 0.9770865, b: 0.8314609, a: 0}
+          slope: {r: 0.8860128, g: 0.92090523, b: 1, a: 0}
+          power: {r: 0.8835418, g: 0.85927594, b: 1, a: 0}
+          offset: {r: 1, g: 0.96375245, b: 0.7782021, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
           gamma: {r: 0, g: 0, b: 0, a: 0}
@@ -153,14 +153,14 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.11722488
-              value: 0.03517586
+              time: 0.114832535
+              value: 0.045226157
               inSlope: 1
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.49282297
-              value: 0.6834171
+              time: 0.4952153
+              value: 0.81407034
               inSlope: 0.7472432
               outSlope: 0.7472432
               tangentMode: 0
@@ -187,8 +187,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.49282297
-              value: 0.4874372
+              time: 0.28229666
+              value: 0.27135676
               inSlope: 1
               outSlope: 1
               tangentMode: 0
@@ -215,8 +215,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.57416266
-              value: 0.47738695
+              time: 0.56220096
+              value: 0.43718594
               inSlope: 1
               outSlope: 1
               tangentMode: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.46889952
-              value: 0.4170854
+              time: 0.4784689
+              value: 0.49246234
               inSlope: 1
               outSlope: 1
               tangentMode: 0
@@ -301,10 +301,10 @@ MonoBehaviour:
           m_ZeroValue: 0.5
           m_Range: 1
         e_CurrentEditingCurve: 0
-        e_CurveY: 1
+        e_CurveY: 0
         e_CurveR: 0
         e_CurveG: 0
-        e_CurveB: 0
+        e_CurveB: 1
   userLut:
     m_Enabled: 0
     m_Settings:
