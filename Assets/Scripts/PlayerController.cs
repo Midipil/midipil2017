@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     public BoxCollider mouthCollider, bodyCollider;
     //Movement
+    public float playerHeight = 1.0f;
     public float maxAngle = 45f;
     public float maxSteeringSpeed = 1f;
     public float speedForce = 3f;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GetGlobalVars();
+
+        Calibrate();
 
         // Set vars
         rb = this.GetComponent<Rigidbody>();
@@ -71,10 +74,18 @@ public class PlayerController : MonoBehaviour {
     public void GetGlobalVars()
     {
         // Get global vars
+        playerHeight = GlobalVars.Instance.playerHeight;
         maxAngle = GlobalVars.Instance.maxAngle;
         maxSteeringSpeed = GlobalVars.Instance.maxSteeringSpeed;
         speedForce = GlobalVars.Instance.speed;
         hp = GlobalVars.Instance.hp;
+    }
+
+    public void Calibrate()
+    {
+        Vector3 difVec = new Vector3(0, playerHeight, 0) - head.position;
+        this.transform.Find("VR player").position = difVec;
+        Debug.Log("dif vec : " + difVec);
     }
 
     void ApplySteering(float angle, bool down)

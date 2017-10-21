@@ -7,6 +7,7 @@ public class GlobalVars : Singleton<GlobalVars> {
     protected GlobalVars() { } // guarantee this will be always a singleton only - can't use the constructor!
 
     // Player
+    public float playerHeight = 1.0f;
     public float maxAngle = 45f;
     public float maxSteeringSpeed = 1f;
     public float speed = 3f;
