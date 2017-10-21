@@ -266,13 +266,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aea6d57be359eb42a4d638bf13ddd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fogColor: {r: 0, g: 0.4, b: 0.7, a: 1}
 --- !u!114 &589250359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 589250352}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
