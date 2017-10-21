@@ -147,6 +147,7 @@ public class PlayerController : MonoBehaviour {
     {
         Debug.LogError("GAME OVER");
         // GameManager.Instance.GameOver();
+        GameManager.Instance.GameOver(GetComponentInChildren<RayMouth>().Score);
     }
 
     IEnumerator Rumble(float length, float strength)
@@ -160,6 +161,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "obstacle" || collision.tag == "shark")
         {

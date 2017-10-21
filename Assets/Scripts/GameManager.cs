@@ -15,6 +15,13 @@ public class GameManager : Singleton<GameManager> {
     private SharkManager _sharkManager;
     private RayMouth _rayMouth;
 
+    [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private AudioSource _musicTransitions;
+    [SerializeField] private AudioClip _eatingMusic;
+    [SerializeField] private AudioClip _fightingMusic;
+    [SerializeField] private AudioClip _transitionToFightingMusic;
+    [SerializeField] private AudioClip _transitionToEatingMusic;
+
     private float _difficulty = 0f;
     private float _completeDifficultyCompletionTime = 0f;
     private float _easyEatingTime = 30f;
@@ -97,6 +104,8 @@ public class GameManager : Singleton<GameManager> {
             if(_nextFightingTime <= 0f)
             {
                 // shark attack
+                _musicTransitions.PlayOneShot(_transitionToFightingMusic);
+
                 _sharkManager.Start(_difficulty);
                 State = GameState.FIGHTING;
                 _fightingTime = Mathf.Lerp(_easyFightingTime, _hardFightingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor,1f + _timingRandomnessFactor);
@@ -111,6 +120,8 @@ public class GameManager : Singleton<GameManager> {
             if(_fightingTime <= 0f)
             {
                 // end shark attack
+                _musicTransitions.PlayOneShot(_transitionToEatingMusic);
+
                 _sharkManager.Stop();
                 State = GameState.EATING;
                 _nextFightingTime = Mathf.Lerp(_easyEatingTime, _hardEatingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor, 1f + _timingRandomnessFactor);
