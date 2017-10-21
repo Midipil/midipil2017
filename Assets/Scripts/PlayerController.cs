@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         GetGlobalVars();
 
-        Calibrate();
+        CalibratePlayer();
 
         // Set vars
         rb = this.GetComponent<Rigidbody>();
@@ -40,6 +40,11 @@ public class PlayerController : MonoBehaviour {
         }
         */
 
+    }
+
+    public void StartGame()
+    {
+        CalibratePlayer();
     }
 
     // Update is called once per frame
@@ -81,7 +86,7 @@ public class PlayerController : MonoBehaviour {
         hp = GlobalVars.Instance.hp;
     }
 
-    public void Calibrate()
+    public void CalibratePlayer()
     {
         Vector3 difVec = new Vector3(0, playerHeight, 0) - head.position;
         this.transform.Find("VR player").position = difVec;

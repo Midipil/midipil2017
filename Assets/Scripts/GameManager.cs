@@ -74,6 +74,7 @@ public class GameManager : Singleton<GameManager> {
         {
             if(State == GameState.IDLE)
             {
+                FindObjectOfType<PlayerController>().StartGame();
                 State = GameState.EATING;
                 _nextFightingTime = Mathf.Lerp(_easyEatingTime, _hardEatingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor, 1f + _timingRandomnessFactor);
             }
