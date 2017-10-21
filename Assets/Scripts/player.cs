@@ -17,7 +17,13 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
+
+        // Set global vars
+        maxAngle = GlobalVars.Instance.maxAngle;
+        maxSteeringForce = GlobalVars.Instance.maxSteeringForce;
+        speedForce = GlobalVars.Instance.speedForce;
+        hp = GlobalVars.Instance.hp;
+
         // Set vars
         rb = this.GetComponent<Rigidbody>();
 
