@@ -9,7 +9,7 @@ public class TileSpawner : MonoBehaviour {
 	public List<Transform> tilesObj = new List<Transform> ();
 	float tileSize;
 	Transform playerPos;
-	Transform prevTile;
+	TileHandler prevTile;
 	public float frontView;
 	public float backView;
 
@@ -17,13 +17,13 @@ public class TileSpawner : MonoBehaviour {
 			
 		playerPos = GameObject.FindGameObjectWithTag ("Player").transform;
 
-	    tileSize = tilesPrefab [0].transform.localScale.z * 2;
+	    tileSize = tilesPrefab [0].transform.localScale.z;
 		SpawnTile ();
 	}
 
 	void Update()
 	{
-		if (prevTile != null && prevTile.position.z <= playerPos.position.z + frontView) {
+		if (prevTile != null && prevTile.gameObject.transform.position.z <= playerPos.position.z + frontView) {
 			SpawnTile ();
 		}
 
@@ -48,20 +48,21 @@ public class TileSpawner : MonoBehaviour {
 
 		TileHandler tileH = MathUtilities.Draw (tilesPrefab);	
 
-		TileHandler tile = Instantiate (tilesPrefab[rand]);
+		TileHandler tile = Instantiate(tileH);
 
 		tile.gameObject.SetActive (true);
 
 		if (prevTile == null) {
 			tile.transform.position = new Vector3(0,0,0);
-			prevTile = tile.transform;
 		}
 		else {
-			tile.transform.position = new Vector3(0,0,prevTile.position.z + tileSize * 5);
-			prevTile = tile.transform;
+			tile.transform.position = new Vector3(0,0,prevTile.transform.position.z + tileSize);
 		}
 
-		tilesObj.Add (tile.transform);
-	}
+        tile.Init(prevTile);
+
+        tilesObj.Add (tile.transform);
+        prevTile = tile;
+    }
 
 }

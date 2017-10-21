@@ -26,7 +26,7 @@ public static class MathUtilities
             //-----------
             if (min <= r && r < max)
             {
-                winner = ticket;
+                winner = ticket.Key;
                 break;
             }
             //-----------
