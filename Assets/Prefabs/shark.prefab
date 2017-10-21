@@ -38,9 +38,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4885744358314220}
   - component: {fileID: 114485828658936090}
+  - component: {fileID: 136700807717695780}
   m_Layer: 0
   m_Name: shark
-  m_TagString: Untagged
+  m_TagString: shark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +132,19 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1495648365942062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136700807717695780
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945025193505530}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
