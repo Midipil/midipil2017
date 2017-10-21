@@ -45,6 +45,8 @@ public class TileHandler : MonoBehaviour {
             var interpolatedPos = Vector3.Lerp(before, after, Mathf.Abs(z - before.z) / Mathf.Abs(after.z - before.z));
 
             var plancton = Instantiate(_planctonPrefab, transform, true);
+            // Set height
+            interpolatedPos = new Vector3(interpolatedPos.x, GlobalVars.Instance.playerHeight, interpolatedPos.z);
             plancton.transform.position = interpolatedPos;
         }
     }
