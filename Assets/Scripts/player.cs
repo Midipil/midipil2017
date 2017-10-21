@@ -9,8 +9,8 @@ public class Player : MonoBehaviour {
     public BoxCollider mouthCollider, bodyCollider;
     //Movement
     public float maxAngle = 45f;
-    public float maxSteeringForce = 1f;
-    public float speedForce = 3f;
+    public float maxSteeringSpeed = 1f;
+    public float speed = 3f;
     bool faceDown = true;
     // Health points
     private int hp = 1;
@@ -18,11 +18,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        // Set global vars
-        maxAngle = GlobalVars.Instance.maxAngle;
-        maxSteeringForce = GlobalVars.Instance.maxSteeringForce;
-        speedForce = GlobalVars.Instance.speedForce;
-        hp = GlobalVars.Instance.hp;
+        GetGlobalVars();
 
         // Set vars
         rb = this.GetComponent<Rigidbody>();
@@ -42,6 +38,8 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        GetGlobalVars();
 
         float angle = GetAngle();
 
@@ -65,10 +63,17 @@ public class Player : MonoBehaviour {
         
 	}
     
+    public void GetGlobalVars()
+    {
+        // Get global vars
+        maxAngle = GlobalVars.Instance.maxAngle;
+        maxSteeringSpeed = GlobalVars.Instance.maxSteeringSpeed;
+        speed = GlobalVars.Instance.speed;
+        hp = GlobalVars.Instance.hp;
+    }
 
     void ApplySteering(float angle, bool down)
     {
-        float force = 0f;
         if (!down)
         {
             if(angle < -90)
@@ -80,14 +85,15 @@ public class Player : MonoBehaviour {
             }
         }
         // Compute force
-        force = angle*maxSteeringForce/ maxAngle;
+        float lateralSpeed = angle*maxSteeringSpeed/ maxAngle;
         // apply
-        rb.AddForce(new Vector3(force, 0, 0));
+        rb.position = new Vector3(rb.position.x + lateralSpeed * Time.deltaTime, rb.position.y, rb.position.z);
     }
 
     private void ApplySpeed()
     {
-        rb.AddForce(new Vector3(0, 0, speedForce));
+        //rb.AddForce(new Vector3(0, 0, speedForce));
+        rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speed*Time.deltaTime));
     }
 
     public float GetAngle()
@@ -116,6 +122,7 @@ public class Player : MonoBehaviour {
     private void GameOver()
     {
         Debug.LogError("GAME OVER");
+        // GameManager.Instance.GameOver();
     }
 
     private void OnTriggerEnter(Collider collision)
