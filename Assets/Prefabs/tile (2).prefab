@@ -110,4 +110,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 0
-  _planctonPrefab: {fileID: 0}
+  _planctonPrefab: {fileID: 1056061484688912, guid: 641e6c059e97f4f44a2739e3c8dc4603,
+    type: 2}

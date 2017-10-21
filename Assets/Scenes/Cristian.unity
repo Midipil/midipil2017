@@ -150,7 +150,9 @@ MonoBehaviour:
   - {fileID: 114778451612064024, guid: e7872496b8e414b22b76c832d5965692, type: 2}
   - {fileID: 114046698519686240, guid: 60d82078e2b53444bbc792ef9d2a9908, type: 2}
   - {fileID: 114131300149792836, guid: 5d8f34cd38ede461bbcc9c233246b297, type: 2}
-  tiles: []
+  tilesObj: []
+  frontView: 250
+  backView: 100
 --- !u!4 &1016866183
 Transform:
   m_ObjectHideFlags: 0
@@ -242,7 +244,7 @@ GameObject:
   - component: {fileID: 1778178507}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

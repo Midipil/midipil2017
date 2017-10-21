@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour {
+public class Player : MonoBehaviour {
 
     public Transform head, left, right;
     private Rigidbody rb;
     public BoxCollider mouthCollider, bodyCollider;
+    //Movement
     public float maxAngle = 45f;
     public float maxSteeringForce = 1f;
     public float speedForce = 3f;
     bool faceDown = true;
+    // Health points
+    private int hp = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -92,5 +95,28 @@ public class player : MonoBehaviour {
             angle *= -1;
         }
         return angle;
+    }
+
+    public int Hit(int damage = 1)
+    {
+        hp -= damage; // 1 is default
+        if(hp <= 0)
+        {
+            GameOver();
+        }
+        return hp; // for info
+    }
+
+    private void GameOver()
+    {
+        Debug.LogError("GAME OVER");
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "obstacle" || collision.tag == "shark")
+        {
+            Hit();
+        }
     }
 }
