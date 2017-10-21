@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class SharkManager : MonoBehaviour {
 
-	public GameObject player;
+	GameObject player;
 	public GameObject sharkPrefab;
 	public float corridorWidth = 16f;
 	public float zRandom = 1.5f;
 	public float startHeight = 30f;
-	public float maxSpeed = 10.0f;
 	public float speed = 1f;
-	public float maxFrequency = 3f;
 	//par secondes
 	public float frequency = 6f;
 	public bool isAttacking = false;
-	float newSpeed;
-	float newFrequency;
+	public float easySpeed = 7f;
+	public float hardSpeed = 18f;
+	public float easyFreq = 6f;
+	public float hardFreq = 3f;
 	float time;
 
 	void Start () {
@@ -35,14 +35,12 @@ public class SharkManager : MonoBehaviour {
 				time = 0;
 				SpawnShark ();
 			}
-			speed = Mathf.Lerp (speed, newSpeed, Time.deltaTime / 100);
-			frequency = Mathf.Lerp (frequency, newFrequency, Time.deltaTime / 100);
 		}		
 	}
 
 	public void Start (float difficultyLevel) {
-		newFrequency = (maxFrequency * 2) - (maxFrequency/difficultyLevel);
-		newSpeed = maxSpeed * difficultyLevel;
+		speed = Mathf.Lerp (easySpeed, hardSpeed, difficultyLevel);
+		frequency = Mathf.Lerp (easyFreq, hardFreq, difficultyLevel);
 		isAttacking = true;
 	}
 

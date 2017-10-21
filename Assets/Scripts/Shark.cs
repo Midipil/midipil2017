@@ -6,12 +6,12 @@ public class Shark : MonoBehaviour {
 
 	// Speed in m/s
 	public float speed = 10.0f;
-
+	public float deathDelay = 10.0f;
 	public ParticleSystem bubbles;
 	public ParticleSystem dustOnGroundHit;
 
 	private bool hitGround = false;
-
+	float time;
 	// Use this for initialization
 	void Start () {
 		dustOnGroundHit.Stop ();
@@ -32,5 +32,8 @@ public class Shark : MonoBehaviour {
 				bubbles.Stop ();
 			}
 		}
+		time += Time.deltaTime;
+		if (time > deathDelay)
+			Destroy (gameObject);
 	}
 }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     public BoxCollider mouthCollider, bodyCollider;
     //Movement
+    public float playerHeight = 1.0f;
     public float maxAngle = 45f;
     public float maxSteeringSpeed = 1f;
     public float speedForce = 3f;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GetGlobalVars();
+
+        CalibratePlayer();
 
         // Set vars
         rb = this.GetComponent<Rigidbody>();
@@ -37,6 +40,11 @@ public class PlayerController : MonoBehaviour {
         }
         */
 
+    }
+
+    public void StartGame()
+    {
+        CalibratePlayer();
     }
 
     // Update is called once per frame
@@ -71,10 +79,18 @@ public class PlayerController : MonoBehaviour {
     public void GetGlobalVars()
     {
         // Get global vars
+        playerHeight = GlobalVars.Instance.playerHeight;
         maxAngle = GlobalVars.Instance.maxAngle;
         maxSteeringSpeed = GlobalVars.Instance.maxSteeringSpeed;
         speedForce = GlobalVars.Instance.speed;
         hp = GlobalVars.Instance.hp;
+    }
+
+    public void CalibratePlayer()
+    {
+        Vector3 difVec = new Vector3(0, playerHeight, 0) - head.position;
+        this.transform.Find("VR player").position = difVec;
+        Debug.Log("dif vec : " + difVec);
     }
 
     void ApplySteering(float angle, bool down)
@@ -117,6 +133,8 @@ public class PlayerController : MonoBehaviour {
     public int Hit(int damage = 1)
     {
         hp -= damage; // 1 is default
+        // Rumble
+        StartCoroutine(Rumble(1.5f,1f));
         if(hp <= 0)
         {
             GameOver();
@@ -130,7 +148,17 @@ public class PlayerController : MonoBehaviour {
         // GameManager.Instance.GameOver();
     }
 
-    private void OnTriggerEnter(Collider collision)
+    IEnumerator Rumble(float length, float strength)
+    {
+        for (float i = 0; i < length; i += Time.deltaTime)
+        {
+            SteamVR_Controller.Input((int)left.GetComponent<SteamVR_TrackedObject>().index). TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
+            SteamVR_Controller.Input((int)right.GetComponent<SteamVR_TrackedObject>().index).TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
+            yield return null;
+        }
+    }
+
+private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "obstacle" || collision.tag == "shark")
         {
