@@ -18,7 +18,7 @@ public class SharkManager : MonoBehaviour {
 
 	void Start()
 	{
-		Start (0.75f);
+		Start (0.67f);
 	}
 
 	// Update is called once per frame
