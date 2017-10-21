@@ -29,10 +29,7 @@ public class RayMouth : MonoBehaviour {
     public void GetGlobalVars()
     {
         // Get global vars
-        maxAngle = GlobalVars.Instance.maxAngle;
-        maxSteeringSpeed = GlobalVars.Instance.maxSteeringSpeed;
-        speed = GlobalVars.Instance.speed;
-        hp = GlobalVars.Instance.hp;
+        micThreshold = GlobalVars.Instance.micThreshold;
     }
 
     private void OnTriggerEnter(Collider collision)

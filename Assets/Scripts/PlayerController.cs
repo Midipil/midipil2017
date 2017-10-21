@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     //Movement
     public float maxAngle = 45f;
     public float maxSteeringSpeed = 1f;
-    public float speed = 3f;
+    public float speedForce = 3f;
     bool faceDown = true;
     // Health points
     private int hp = 1;
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour {
         // Get global vars
         maxAngle = GlobalVars.Instance.maxAngle;
         maxSteeringSpeed = GlobalVars.Instance.maxSteeringSpeed;
-        speed = GlobalVars.Instance.speed;
+        speedForce = GlobalVars.Instance.speed;
         hp = GlobalVars.Instance.hp;
     }
 
@@ -90,15 +90,15 @@ public class PlayerController : MonoBehaviour {
             }
         }
         // Compute force
-        float lateralSpeed = angle*maxSteeringSpeed/ maxAngle;
+        float force = angle * maxSteeringSpeed / maxAngle;
         // apply
-        rb.position = new Vector3(rb.position.x + lateralSpeed * Time.deltaTime, rb.position.y, rb.position.z);
+        rb.AddForce(new Vector3(force, 0, 0));
     }
 
     private void ApplySpeed()
     {
-        //rb.AddForce(new Vector3(0, 0, speedForce));
-        rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speed*Time.deltaTime));
+        rb.AddForce(new Vector3(0, 0, speedForce));
+        //rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speed*Time.deltaTime));
     }
 
     public float GetAngle()
