@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class MathUtilities
 {
-    static System.Random rand;
+	static System.Random rand = new System.Random();
 
     public static TileHandler Draw(List<TileHandler> weightedTiles)
     {
