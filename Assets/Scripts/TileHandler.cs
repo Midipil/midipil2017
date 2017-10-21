@@ -12,6 +12,7 @@ public class TileHandler : MonoBehaviour {
 
     [SerializeField] private GameObject _planctonPrefab;
     private float _planctonDensity = 0.5f;
+    private float _planctonOffset = -0.2f;
 
     public Vector3[] Balises
     {
@@ -46,7 +47,7 @@ public class TileHandler : MonoBehaviour {
 
             var plancton = Instantiate(_planctonPrefab, transform, true);
             // Set height
-            interpolatedPos = new Vector3(interpolatedPos.x, GlobalVars.Instance.playerHeight, interpolatedPos.z);
+            interpolatedPos = new Vector3(interpolatedPos.x, GlobalVars.Instance.playerHeight + _planctonOffset, interpolatedPos.z);
             plancton.transform.position = interpolatedPos;
         }
     }
