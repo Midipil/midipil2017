@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager> {
         private set;
     }
 
+    [SerializeField] private TextMesh _mesh;
     private SharkManager _sharkManager;
 
     private float _difficulty = 0f;
@@ -56,7 +57,7 @@ public class GameManager : Singleton<GameManager> {
         while (PlayerPrefs.HasKey("" + thisPlayerIndex++)) { }
         PlayerPrefs.SetInt("" + thisPlayerIndex, score);
 
-
+        _mesh.text = "GAME OVER\nscore: " + score;
 
         State = GameState.GAME_OVER;
     }
@@ -84,7 +85,7 @@ public class GameManager : Singleton<GameManager> {
             if(_nextFightingTime <= 0f)
             {
                 // shark attack
-                //_sharkManager.Start(_difficulty);
+                _sharkManager.Start(_difficulty);
                 State = GameState.FIGHTING;
                 _fightingTime = Mathf.Lerp(_easyFightingTime, _hardFightingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor,1f + _timingRandomnessFactor);
             }
@@ -98,7 +99,7 @@ public class GameManager : Singleton<GameManager> {
             if(_fightingTime <= 0f)
             {
                 // end shark attack
-                //_sharkManager.Stop();
+                _sharkManager.Stop();
                 State = GameState.EATING;
                 _nextFightingTime = Mathf.Lerp(_easyEatingTime, _hardEatingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor, 1f + _timingRandomnessFactor);
             }
@@ -107,5 +108,7 @@ public class GameManager : Singleton<GameManager> {
                 _fightingTime -= Time.deltaTime;
             }
         }
+
+        _difficulty += Time.deltaTime / 100f;
     }
 }
