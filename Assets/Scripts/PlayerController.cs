@@ -128,6 +128,8 @@ public class PlayerController : MonoBehaviour {
     public int Hit(int damage = 1)
     {
         hp -= damage; // 1 is default
+        // Rumble
+        StartCoroutine(Rumble(1.5f,1f));
         if(hp <= 0)
         {
             GameOver();
@@ -141,7 +143,17 @@ public class PlayerController : MonoBehaviour {
         // GameManager.Instance.GameOver();
     }
 
-    private void OnTriggerEnter(Collider collision)
+    IEnumerator Rumble(float length, float strength)
+    {
+        for (float i = 0; i < length; i += Time.deltaTime)
+        {
+            SteamVR_Controller.Input((int)left.GetComponent<SteamVR_TrackedObject>().index). TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
+            SteamVR_Controller.Input((int)right.GetComponent<SteamVR_TrackedObject>().index).TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
+            yield return null;
+        }
+    }
+
+private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "obstacle" || collision.tag == "shark")
         {
