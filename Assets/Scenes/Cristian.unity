@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -112,6 +112,58 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1016866181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1016866183}
+  - component: {fileID: 1016866182}
+  m_Layer: 0
+  m_Name: _TileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1016866182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1016866181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37c618b55b9b4d1795bffcfc3f7bd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilesPrefab:
+  - {fileID: 114645625278057310, guid: 0919a21b9caa441afb974e4424ccd521, type: 2}
+  - {fileID: 114486626531443710, guid: 3c6ea5a51e2964b11bfa030447065030, type: 2}
+  - {fileID: 114325652924237736, guid: 68fce77597c324795ac6302c066bead5, type: 2}
+  - {fileID: 114784120852130434, guid: e95d605f84d144e98a1dd3ef100fd722, type: 2}
+  - {fileID: 114155521222647628, guid: dbda7d096ac96438db93c3cb3a1a949e, type: 2}
+  - {fileID: 114072791902519662, guid: 73cc2ae35713d4489b9e85103035131c, type: 2}
+  - {fileID: 114886296711899436, guid: 3522c0a887519437886e455c85f65755, type: 2}
+  - {fileID: 114778451612064024, guid: e7872496b8e414b22b76c832d5965692, type: 2}
+  - {fileID: 114046698519686240, guid: 60d82078e2b53444bbc792ef9d2a9908, type: 2}
+  - {fileID: 114131300149792836, guid: 5d8f34cd38ede461bbcc9c233246b297, type: 2}
+  tiles: []
+--- !u!4 &1016866183
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1016866181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1110562166
 GameObject:
   m_ObjectHideFlags: 0

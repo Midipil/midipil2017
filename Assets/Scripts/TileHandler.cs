@@ -4,7 +4,8 @@ using System.Linq;
 using UnityEngine;
 
 public class TileHandler : MonoBehaviour {
-    [SerializeField] public float Weight { get; private set; }
+    [SerializeField] private float _weight;
+    public float Weight { get { return _weight; } }
 
     private GameObject _tile;
     private TileHandler _prevTile;

@@ -37,15 +37,8 @@ public class RayMouth : MonoBehaviour {
         // To later replace with the sound detection
         if (true)
         {
-            foreach (var go in _collidedPlanctons)
-            {
-                if (go != null)
-                {
-                    Score++;
-                    Debug.Log("score : " + Score);
-                    Destroy(go);
-                }
-            }
+            Score += _collidedPlanctons.Count;
+            _collidedPlanctons.Clear();
         }
     }
 
