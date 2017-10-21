@@ -50,7 +50,7 @@ public class RayMouth : MonoBehaviour {
         // To later replace with the sound detection
         if (mic.loudness > micThreshold)
         {
-            //Debug.Log("Loud enough to eat");
+            Debug.Log("Loud enough to eat");
             Score += _collidedPlanctons.Count;
 
             foreach (var go in _collidedPlanctons) Destroy(go);
