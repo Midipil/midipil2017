@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondView : MonoBehaviour {
+public class SecondPlayer : MonoBehaviour {
 
-	public GameObject prefab;
+	public GameObject sharkPrefab;
 	public float spawnHight;
 	public Camera cam;
 	Vector3 pos = new Vector3();
-
+	public float frequency;
+	float time;
 	public GameObject player;
 	private Vector3 offset;  
 
@@ -20,26 +21,19 @@ public class SecondView : MonoBehaviour {
 
 	void Update () 
 	{
+		time += Time.deltaTime;
 
-		if(Input.GetMouseButtonDown(0))   
+		if(Input.GetMouseButtonDown(0) && time > frequency)   
 		{
-
 			RaycastHit hit;
 			Ray ray = cam.ScreenPointToRay (Input.mousePosition);
-			//Debug.Log (Input.mousePosition);
+
 			if (Physics.Raycast (ray, out hit)) {
 
-				GameObject obj = Instantiate (prefab);
+				GameObject obj = Instantiate (sharkPrefab);
 				obj.transform.position = new Vector3 (hit.point.x, hit.point.y + spawnHight, hit.point.z);
+				time = 0;
 			}
-			/*
-			Vector2 mousePos = new Vector2();
-
-			mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-			pos = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
-			Debug.Log (pos);
-			Instantiate (prefab, pos, Quaternion.identity);*/
 		}
 	}
 
