@@ -349,7 +349,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e503d39f0466074ba864b9487455c87, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1490322680
+--- !u!1001 &1628337331
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -358,7 +358,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4885744358314220, guid: dd94e545b465f774ea3aeeaa3d46fb11, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.76
+      value: -4.76
       objectReference: {fileID: 0}
     - target: {fileID: 4885744358314220, guid: dd94e545b465f774ea3aeeaa3d46fb11, type: 2}
       propertyPath: m_LocalPosition.y
