@@ -39,8 +39,12 @@ public class RayMouth : MonoBehaviour {
         {
             foreach (var go in _collidedPlanctons)
             {
-                Score++;
-                Destroy(go);
+                if (go != null)
+                {
+                    Score++;
+                    Debug.Log("score : " + Score);
+                    Destroy(go);
+                }
             }
         }
     }

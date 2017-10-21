@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23666383071660724}
   m_Layer: 0
   m_Name: Plancton
-  m_TagString: Untagged
+  m_TagString: plancton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

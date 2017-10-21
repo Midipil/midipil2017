@@ -52,7 +52,7 @@ public class player : MonoBehaviour {
         }
 
         ApplySteering(angle, faceDown);
-        //ApplySpeed();
+        ApplySpeed();
         
 	}
     
