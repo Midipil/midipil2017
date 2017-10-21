@@ -10,15 +10,19 @@ public class SharkManager : MonoBehaviour {
     public float zRandom = 1.5f;
     public float startHeight = 30f;
     public float maxSpeed = 10.0f;
-	public float speed;
+	public float speed = 1f;
 	public float maxFrequency = 5f;  //par secondes
-	public float frequency;
+	public float frequency = 1f;
 	public bool isAttacking = false;
+	float newSpeed;
+	float newFrequency;
 	float time;
 
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag ("Player");
+
+		Start (0.8f);
 	}
 
 	// Update is called once per frame
@@ -34,13 +38,15 @@ public class SharkManager : MonoBehaviour {
 				time = 0;
 				SpawnShark ();
 			}
+			speed = Mathf.Lerp (speed, newSpeed, Time.deltaTime / 100);
+			frequency = Mathf.Lerp (frequency, newFrequency, Time.deltaTime / 100);
 		}		
 	}
 		
 	public void Start(float difficultyLevel)
 	{
-		frequency = maxFrequency * difficultyLevel;
-		speed = maxSpeed * difficultyLevel;
+		newFrequency = maxFrequency * difficultyLevel;
+		newSpeed = maxSpeed * difficultyLevel;
 		isAttacking = true;
 	}
 
