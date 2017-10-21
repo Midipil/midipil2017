@@ -84,7 +84,7 @@ public class GameManager : Singleton<GameManager> {
             if(_nextFightingTime <= 0f)
             {
                 // shark attack
-                _sharkManager.Start(_difficulty);
+                //_sharkManager.Start(_difficulty);
                 State = GameState.FIGHTING;
                 _fightingTime = Mathf.Lerp(_easyFightingTime, _hardFightingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor,1f + _timingRandomnessFactor);
             }
@@ -98,7 +98,7 @@ public class GameManager : Singleton<GameManager> {
             if(_fightingTime <= 0f)
             {
                 // end shark attack
-                _sharkManager.Stop();
+                //_sharkManager.Stop();
                 State = GameState.EATING;
                 _nextFightingTime = Mathf.Lerp(_easyEatingTime, _hardEatingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor, 1f + _timingRandomnessFactor);
             }
