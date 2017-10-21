@@ -10,7 +10,7 @@ public class RayMouth : MonoBehaviour {
     public MicrophoneInput mic;
     public float micThreshold = 0.5f;
     
-    public float Score
+    public int Score
     {
         get;
         private set;
