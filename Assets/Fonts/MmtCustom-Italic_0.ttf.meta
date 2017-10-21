@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 7499751e9fdd2fa4fa5ba33cce58e8c9
+timeCreated: 1508594545
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MmtCustom
+  fontNames:
+  - MmtCustom
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 48f7e1147bdbfa04eb1c0162962babdc, type: 3}
+  - {fileID: 12800000, guid: 4bcf1788c43e86043b3c44b0c65aa0ff, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
