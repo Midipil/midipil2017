@@ -16,11 +16,6 @@ public class SharkManager : MonoBehaviour {
 	public bool isAttacking = false;
 	float time;
 
-	void Start()
-	{
-		Start (0.67f);
-	}
-
 	// Update is called once per frame
 	void Update () {
 		time += Time.deltaTime;

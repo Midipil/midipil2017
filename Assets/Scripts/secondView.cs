@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class secondView : MonoBehaviour {
+public class SecondView : MonoBehaviour {
 
 	public GameObject prefab;
 	public float spawnHight;
