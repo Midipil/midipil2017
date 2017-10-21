@@ -11,9 +11,11 @@ public class GameManager : Singleton<GameManager> {
         private set;
     }
 
+    [SerializeField] private TextMesh _gameOverText;
     private SharkManager _sharkManager;
 
     private float _difficulty = 0f;
+    private float _completeDifficultyCompletionTime = 0f;
     private float _easyEatingTime = 30f;
     private float _hardEatingTime = 5f;
     private float _easyFightingTime = 20f;
@@ -38,10 +40,12 @@ public class GameManager : Singleton<GameManager> {
         _difficulty = 0f;
         _nextFightingTime = float.MaxValue;
         _fightingTime = float.MinValue;
+        _gameOverText.gameObject.SetActive(false);
     }
 
     private void GetGlobalVars()
     {
+        _completeDifficultyCompletionTime = GlobalVars.Instance.completeDifficultyCompletionTime;
         _easyEatingTime = GlobalVars.Instance.easyEatingTime;
         _hardEatingTime = GlobalVars.Instance.hardEatingTime;
         _easyFightingTime = GlobalVars.Instance.easyFightingTime;
@@ -56,7 +60,8 @@ public class GameManager : Singleton<GameManager> {
         while (PlayerPrefs.HasKey("" + thisPlayerIndex++)) { }
         PlayerPrefs.SetInt("" + thisPlayerIndex, score);
 
-
+        _gameOverText.text = "GAME OVER\nscore: " + score;
+        _gameOverText.gameObject.SetActive(true);
 
         State = GameState.GAME_OVER;
     }
@@ -84,7 +89,7 @@ public class GameManager : Singleton<GameManager> {
             if(_nextFightingTime <= 0f)
             {
                 // shark attack
-                //_sharkManager.Start(_difficulty);
+                _sharkManager.Start(_difficulty);
                 State = GameState.FIGHTING;
                 _fightingTime = Mathf.Lerp(_easyFightingTime, _hardFightingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor,1f + _timingRandomnessFactor);
             }
@@ -98,7 +103,7 @@ public class GameManager : Singleton<GameManager> {
             if(_fightingTime <= 0f)
             {
                 // end shark attack
-                //_sharkManager.Stop();
+                _sharkManager.Stop();
                 State = GameState.EATING;
                 _nextFightingTime = Mathf.Lerp(_easyEatingTime, _hardEatingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor, 1f + _timingRandomnessFactor);
             }
@@ -107,5 +112,7 @@ public class GameManager : Singleton<GameManager> {
                 _fightingTime -= Time.deltaTime;
             }
         }
+
+        _difficulty += Time.deltaTime / (60 * 10f);
     }
 }
