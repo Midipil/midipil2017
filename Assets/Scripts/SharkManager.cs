@@ -22,8 +22,17 @@ public class SharkManager : MonoBehaviour {
         {
             SpawnShark();
         }
-		
 	}
+
+    public void Start(float difficulty)
+    {
+
+    }
+
+    public void Stop()
+    {
+
+    }
 
     public void SpawnShark()
     {

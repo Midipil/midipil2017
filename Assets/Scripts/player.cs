@@ -60,9 +60,11 @@ public class Player : MonoBehaviour {
             faceDown = false;
         }
 
-        ApplySteering(angle, faceDown);
-        ApplySpeed();
-        
+        if (GameManager.Instance.State == GameManager.GameState.EATING || GameManager.Instance.State == GameManager.GameState.FIGHTING)
+        {
+            ApplySteering(angle, faceDown);
+            ApplySpeed();
+        }  
 	}
     
 
