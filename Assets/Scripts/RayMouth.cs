@@ -22,7 +22,7 @@ public class RayMouth : MonoBehaviour {
     void Start ()
     {
         GetGlobalVars();
-        Score = 0f;
+        Score = 0;
         _collidedPlanctons.Clear();
 	}
 
