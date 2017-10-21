@@ -16,6 +16,7 @@ public class GlobalVars : Singleton<GlobalVars> {
     public float planctonDensity = 0.5f;
 
     // Game Controller
+    public float completeDifficultyCompletionTime = 60f * 10;
     public float easyEatingTime = 30f;
     public float hardEatingTime = 5f;
     public float easyFightingTime = 20f;

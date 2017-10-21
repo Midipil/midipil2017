@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager> {
     private SharkManager _sharkManager;
 
     private float _difficulty = 0f;
+    private float _completeDifficultyCompletionTime = 0f;
     private float _easyEatingTime = 30f;
     private float _hardEatingTime = 5f;
     private float _easyFightingTime = 20f;
@@ -44,6 +45,7 @@ public class GameManager : Singleton<GameManager> {
 
     private void GetGlobalVars()
     {
+        _completeDifficultyCompletionTime = GlobalVars.Instance.completeDifficultyCompletionTime;
         _easyEatingTime = GlobalVars.Instance.easyEatingTime;
         _hardEatingTime = GlobalVars.Instance.hardEatingTime;
         _easyFightingTime = GlobalVars.Instance.easyFightingTime;
