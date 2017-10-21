@@ -38,6 +38,7 @@ public class RayMouth : MonoBehaviour {
         if (true)
         {
             Score += _collidedPlanctons.Count;
+            foreach (var go in _collidedPlanctons) Destroy(go);
             _collidedPlanctons.Clear();
         }
     }

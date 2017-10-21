@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         // Set global vars
         maxAngle = GlobalVars.Instance.maxAngle;
         maxSteeringForce = GlobalVars.Instance.maxSteeringForce;
@@ -26,6 +25,10 @@ public class PlayerController : MonoBehaviour {
 
         // Set vars
         rb = this.GetComponent<Rigidbody>();
+
+        rb.inertiaTensorRotation = Quaternion.identity;
+        rb.inertiaTensor = Vector3.one;
+        rb.centerOfMass = Vector3.zero;
 
         // Check if left controller is really on the left, if not invert...USELESS ?
         /*
@@ -37,8 +40,8 @@ public class PlayerController : MonoBehaviour {
             Debug.LogWarning("controllers inverted");
         }
         */
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
