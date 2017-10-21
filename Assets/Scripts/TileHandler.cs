@@ -42,10 +42,10 @@ public class TileHandler : MonoBehaviour {
             var before = path[currentPointAfter - 1];
             var after = path[currentPointAfter];
 
-            var interpolatedPos = Vector3.Lerp(before, after, (z - before.z) / (after.z - before.z));
+            var interpolatedPos = Vector3.Lerp(before, after, Mathf.Abs(z - before.z) / Mathf.Abs(after.z - before.z));
 
-            Instantiate(_planctonPrefab, transform, false);
-            _planctonPrefab.transform.position = interpolatedPos;
+            var plancton = Instantiate(_planctonPrefab, transform, true);
+            plancton.transform.position = interpolatedPos;
         }
     }
 
