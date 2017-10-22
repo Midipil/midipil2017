@@ -1554,6 +1554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weight: 0.5
+  IsOkayWithSharks: 0
   _planctonPrefab: {fileID: 1056061484688912, guid: 641e6c059e97f4f44a2739e3c8dc4603,
     type: 2}
 --- !u!136 &136720271799134104
@@ -1563,7 +1564,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1725218432508190}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.2
   m_Height: 5.77049
@@ -1576,7 +1577,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1757494839691962}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.2
   m_Height: 5.77049
@@ -1589,7 +1590,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313879205178470}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.2
   m_Height: 5.77049

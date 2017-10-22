@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TileSpawner : MonoBehaviour {
@@ -42,9 +43,13 @@ public class TileSpawner : MonoBehaviour {
 	void SpawnTile () {
 		int rand = Random.Range (0, tilesPrefab.Count);
 
-        //float timeFor
+        TileHandler tileH;
 
-		TileHandler tileH = MathUtilities.Draw (tilesPrefab);	
+        float tilesBeforeShark = tileSize / GlobalVars.Instance.speed;
+        if (GameManager.Instance.State == GameManager.GameState.FIGHTING || tilesBeforeShark < 1f)
+            tileH = MathUtilities.Draw(tilesPrefab.Where(t => t.IsOkayWithSharks).ToList());
+        else
+            tileH = MathUtilities.Draw(tilesPrefab);	
 
 		TileHandler tile = Instantiate (tileH);
 
