@@ -353,7 +353,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1985769626408610}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.31492853, y: 0.31492853, z: 0.31492853}
   m_Children:
   - {fileID: 4846775764563526}
@@ -476,7 +476,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1945025193505530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.76, y: 15.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4341139831200654}
@@ -630,7 +630,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 16ff431d1b5892a41b18baba14e87668, type: 3}
   - {fileID: 8300000, guid: 18180592774dd2e43a95d19e18f00329, type: 3}
   - {fileID: 8300000, guid: e20ccb56bb5e5e64abe3a0a2cf30eaaf, type: 3}
-  HitGroundSound: {fileID: 0}
+  HitGroundSound: {fileID: 8300000, guid: 0e220b97baa73db4fab6fba879e1b024, type: 3}
 --- !u!136 &136700807717695780
 CapsuleCollider:
   m_ObjectHideFlags: 1
