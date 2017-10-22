@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
 		Vector3 difVec = new Vector3 (0, playerHeight, 0) - head.position;
 		this.transform.Find ("VR player").position += difVec;
         // calibraie
-        rayModel.transform.position = new Vector3(head.position.x, head.position.y - 0.2f, head.position.z - 0.4f);
+        rayModel.transform.position = new Vector3(head.position.x, head.position.y - 0.25f, head.position.z - 0.3f);
 	}
 
 	void ApplySteering (float angle, bool down) {
