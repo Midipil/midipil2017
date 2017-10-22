@@ -10,6 +10,7 @@
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
+    static bool test = false;
 
     private static object _lock = new object();
 
@@ -46,7 +47,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                         singleton.name = "(singleton) " + typeof(T).ToString();
 
                         DontDestroyOnLoad(singleton);
-
+                        test = true;
                         Debug.Log("[Singleton] An instance of " + typeof(T) +
                             " is needed in the scene, so '" + singleton +
                             "' was created with DontDestroyOnLoad.");
@@ -55,6 +56,12 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     {
                         Debug.Log("[Singleton] Using instance already created: " +
                             _instance.gameObject.name);
+
+                        if (!test)
+                        {
+                            DontDestroyOnLoad(_instance.gameObject);
+                            test = true;
+                        }
                     }
                 }
 
@@ -74,6 +81,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     /// </summary>
     public void OnDestroy()
     {
-        applicationIsQuitting = true;
+        //applicationIsQuitting = true;
     }
 }

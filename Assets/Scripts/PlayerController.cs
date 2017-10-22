@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
 
 	public float widthLimit = 16;
 
+    private float _decceleratorDividor = 1f;
+
 	// Use this for initialization
 	void Start () {
 		GetGlobalVars ();
@@ -75,11 +77,12 @@ public class PlayerController : MonoBehaviour {
 
 		if (GameManager.Instance.State == GameManager.GameState.EATING || GameManager.Instance.State == GameManager.GameState.FIGHTING) {
 			ApplySteering (angle, faceDown);
-			ApplySpeed ();
-		}  
-	}
+		}
 
-	public void GetGlobalVars () {
+        ApplySpeed();
+    }
+
+    public void GetGlobalVars () {
 		// Get global vars
 		playerHeight = GlobalVars.Instance.playerHeight;
 		maxAngle = GlobalVars.Instance.maxAngle;
@@ -116,11 +119,20 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void ApplySpeed () {
-		//rb.AddForce(new Vector3(0, 0, speedForce));
-		rb.MovePosition (new Vector3 (rb.position.x, rb.position.y, rb.position.z + speedForce * Time.deltaTime));
-	}
+        //rb.AddForce(new Vector3(0, 0, speedForce));
+        if (GameManager.Instance.State == GameManager.GameState.EATING || GameManager.Instance.State == GameManager.GameState.FIGHTING)
+        {
+            _decceleratorDividor = 1f;
+            rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speedForce * Time.deltaTime));
+        }
+        else if (GameManager.Instance.State == GameManager.GameState.GAME_OVER && _decceleratorDividor < 20f)
+        {
+            rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speedForce * Time.deltaTime / _decceleratorDividor));
+            _decceleratorDividor += 3 * Time.deltaTime;
+        }
+    }
 
-	public float GetAngle () {
+    public float GetAngle () {
 		Vector3 handsVec = right.position - left.position;
 		handsVec = new Vector3 (handsVec.x, handsVec.y, 0f);
 		float angle = 0f;
