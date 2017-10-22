@@ -7,7 +7,8 @@ public class SharkManager : MonoBehaviour {
 	GameObject player;
 	public GameObject sharkPrefab;
 	public float corridorWidth = 16f;
-	public float zRandom = 1.5f;
+	public float zRandomMin = 1.5f;
+	public float zRandomMax = 3f;
 	public float startHeight = 30f;
 	public float speed = 1f;
 	//par secondes
@@ -48,17 +49,18 @@ public class SharkManager : MonoBehaviour {
 		isAttacking = false;
 	}
 
-	[ContextMenu("SpawnShark")]
+	[ContextMenu ("SpawnShark")]
 	public void SpawnShark () {
 		// Compute distance
 		float distToTravelShark = startHeight;
-		float timeToTravel = distToTravelShark / speed; // seconds
-		float distToTravelPlayer = timeToTravel * player.GetComponent<Rigidbody> ().velocity.z;
+		float timeToTravelShark = distToTravelShark / speed; // seconds
+		float distToTravelPlayer = timeToTravelShark * GlobalVars.Instance.speed;
+
 		// Random Z
-		float rand = Random.Range (0, zRandom);
-		float newZ = player.transform.position.z + (rand);
+		float rand = Random.Range (0, zRandomMax);
+		float newZ = player.transform.position.z + rand;
 		// Compute shark initial position
-		Vector3 sharkPos = new Vector3 (Random.Range (-corridorWidth / 3f, corridorWidth / 3f), startHeight, distToTravelPlayer + newZ);
+		Vector3 sharkPos = new Vector3 (Random.Range (player.transform.position.x - corridorWidth / 3f, player.transform.position.x + corridorWidth / 3f), startHeight, distToTravelPlayer + newZ);
 		// Spawn shark
 		GameObject shark = GameObject.Instantiate (sharkPrefab, sharkPos, Quaternion.identity);
 		shark.GetComponent<Shark> ().speed = speed;
