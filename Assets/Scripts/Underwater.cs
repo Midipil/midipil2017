@@ -14,7 +14,7 @@ public class Underwater : MonoBehaviour {
 		RenderSettings.fog = true;
 		RenderSettings.fogColor = fogColor;
 		RenderSettings.fogDensity = 0.04f;
-		//RenderSettings.skybox = null;
+		RenderSettings.skybox = null;
 	}
 
 }
