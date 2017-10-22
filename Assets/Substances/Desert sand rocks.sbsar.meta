@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b76338c860dab3d43b3785ec58989cd1
-timeCreated: 1508591072
+timeCreated: 1508663373
 licenseType: Free
 SubstanceImporter:
   externalObjects: {}
@@ -11,7 +11,7 @@ SubstanceImporter:
     prototypeName: Pebbels_in_sand
     shaderName: 
     shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-    shaderKeywords: _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
+    shaderKeywords: 
     renderQueue: -1
     lightmapFlags: 4
     inputs:
