@@ -9,11 +9,12 @@ public class Underwater : MonoBehaviour {
 	void Start () {
 		//Set the background color
 		GetComponent<Camera> ().backgroundColor = fogColor;
+		//GetComponent<Camera> ().clearFlags = CameraClearFlags.Color;
 
 		RenderSettings.fog = true;
 		RenderSettings.fogColor = fogColor;
 		RenderSettings.fogDensity = 0.04f;
-		RenderSettings.skybox = null;
+		//RenderSettings.skybox = null;
 	}
 
 }
