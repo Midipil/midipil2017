@@ -12,11 +12,14 @@ public class ScorePanel : MonoBehaviour {
 
     public TextMesh text;
 
+    private AudioSource HitGroundAudio;
+
 	private bool hitGround = false;
 	float time;
 	// Use this for initialization
 	void Start () {
 		dustOnGroundHit.Stop ();
+        HitGroundAudio = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -26,6 +29,7 @@ public class ScorePanel : MonoBehaviour {
 		} else {
 			if (!hitGround) {
 				hitGround = true;
+                HitGroundAudio.Play();
 				// Emit one burst
 				dustOnGroundHit.Emit ((int)dustOnGroundHit.emission.GetBurst (0).count.constant);
 			}

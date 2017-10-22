@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody rb;
 	public BoxCollider mouthCollider, bodyCollider;
 	//Movement
-	public float playerHeight = 1.0f;
+	public float playerHeight = 1.5f;
 	public float maxAngle = 45f;
 	public float maxSteeringSpeed = 1f;
 	public float speedForce = 3f;
@@ -16,13 +16,25 @@ public class PlayerController : MonoBehaviour {
 	// Health points
 	private int hp = 1;
 
+    // sounds
+    public float _minimumForceForSound = 1f;
+    public AudioClip[] _waterSounds;
+    public AudioSource _leftWaterSound;
+    public AudioSource _rightWaterSound;
+
 	public float widthLimit = 16;
 
     private float _decceleratorDividor = 1f;
 
 	// Use this for initialization
 	void Start () {
-		GetGlobalVars ();
+        // Destroy the controllers if needed
+#if !UNITY_EDITOR
+        foreach (Transform t in left) Destroy(t);
+        foreach (Transform t in right) Destroy(t);
+#endif
+
+        GetGlobalVars();
 
 		CalibratePlayer ();
 
@@ -116,6 +128,22 @@ public class PlayerController : MonoBehaviour {
 		// apply
 		rb.MovePosition (new Vector3 (rb.position.x + force * Time.deltaTime, rb.position.y, rb.position.z));
 		//rb.AddForce(new Vector3(force, 0, 0));
+
+        if(Mathf.Abs(force) > _minimumForceForSound)
+        {
+            if (force > 0) // 
+            {
+                _rightWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
+                _rightWaterSound.volume = Mathf.Min(1f,force / 4f);
+                _rightWaterSound.Play();
+            }
+            else
+            {
+                _leftWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
+                _leftWaterSound.volume = Mathf.Min(1f, -force / 4f);
+                _leftWaterSound.Play();
+            }
+        }
 	}
 
 	private void ApplySpeed () {
