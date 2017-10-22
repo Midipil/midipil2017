@@ -130,11 +130,15 @@ public class PlayerController : MonoBehaviour {
     {
         Vector3 handsVec = right.position - left.position;
         handsVec = new Vector3(handsVec.x, handsVec.y, 0f);
-        float angle = Vector3.Angle(handsVec, Vector3.right);
-        // Add angle sign back
-        if(handsVec.y > 0f)
+        float angle = 0f;
+        if (handsVec.magnitude > 0.3f)
         {
-            angle *= -1;
+            angle = Vector3.Angle(handsVec, Vector3.right);
+            // Add angle sign back
+            if (handsVec.y > 0f)
+            {
+                angle *= -1;
+            }
         }
         return angle;
     }

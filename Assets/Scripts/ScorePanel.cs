@@ -5,8 +5,8 @@ using UnityEngine;
 public class ScorePanel : MonoBehaviour {
 
 	// Speed in m/s
-	public float speed = 10.0f;
-	public float deathDelay = 10.0f;
+	public float speed = 20.0f;
+	public float deathDelay = 60.0f;
 	public ParticleSystem bubbles;
 	public ParticleSystem dustOnGroundHit;
 
