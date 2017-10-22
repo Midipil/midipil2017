@@ -41,6 +41,10 @@ public class GameManager : Singleton<GameManager> {
         _rayMouth = FindObjectOfType<RayMouth>();
         GetGlobalVars();
 
+        _musicSource.loop = true;
+        _musicSource.clip = _eatingMusic;
+        _musicSource.Play();
+
         Reset();
     }
 
@@ -106,6 +110,8 @@ public class GameManager : Singleton<GameManager> {
             {
                 // shark attack
                 _musicTransitions.PlayOneShot(_transitionToFightingMusic);
+                _musicSource.clip = _fightingMusic;
+                _musicSource.Play();
 
                 _sharkManager.Start(_difficulty);
                 State = GameState.FIGHTING;
@@ -122,6 +128,8 @@ public class GameManager : Singleton<GameManager> {
             {
                 // end shark attack
                 _musicTransitions.PlayOneShot(_transitionToEatingMusic);
+                _musicSource.clip = _eatingMusic;
+                _musicSource.Play();
 
                 _sharkManager.Stop();
                 State = GameState.EATING;

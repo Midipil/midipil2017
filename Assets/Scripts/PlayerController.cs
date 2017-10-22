@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter (Collider collision) {
-		if (collision.tag == "obstacle" || collision.tag == "shark") {
+		if (collision.CompareTag("obstacle") || collision.CompareTag("shark")) {
 			Hit ();
 		}
 	}

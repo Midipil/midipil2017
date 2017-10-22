@@ -48,9 +48,9 @@ public class TileSpawner : MonoBehaviour {
         if (prevTile != null)
         {
             float unspawnedTilesNbBeforeShark = GameManager.Instance.NextFightingTime / GlobalVars.Instance.speed;
-            unspawnedTilesNbBeforeShark -= (prevTile.transform.position.z + tileSize - playerPos.position.z) / GlobalVars.Instance.speed;
+            unspawnedTilesNbBeforeShark -= (prevTile.transform.position.z - playerPos.position.z) / GlobalVars.Instance.speed;
 
-            if (GameManager.Instance.State == GameManager.GameState.FIGHTING || (GameManager.Instance.NextFightingTime > 0 && unspawnedTilesNbBeforeShark < 1f))
+            if (GameManager.Instance.NextFightingTime > 0 && unspawnedTilesNbBeforeShark < 1f)
                 tileH = MathUtilities.Draw(tilesPrefab.Where(t => t.IsOkayWithSharks).ToList());
             else
                 tileH = MathUtilities.Draw(tilesPrefab);
