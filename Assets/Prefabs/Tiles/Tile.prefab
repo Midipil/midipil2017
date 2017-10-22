@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 136954517965282260}
   m_Layer: 0
   m_Name: Cliffs_low_2 (1)
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 136720271799134104}
   m_Layer: 0
   m_Name: Cliffs_low_2
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 136761288373323938}
   m_Layer: 0
   m_Name: Cliffs_low_3
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

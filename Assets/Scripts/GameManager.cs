@@ -31,6 +31,7 @@ public class GameManager : Singleton<GameManager> {
     private float _timingRandomnessFactor = 0.2f;
 
     private float _nextFightingTime = float.MaxValue;
+    public float NextFightingTime { get { return _nextFightingTime; } }
     private float _fightingTime = float.MinValue;
     protected GameManager() { } // guarantee this will be always a singleton only - can't use the constructor!
 
