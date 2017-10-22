@@ -30,8 +30,11 @@ public class GameManager : Singleton<GameManager> {
     private float _hardFightingTime = 10f;
     private float _timingRandomnessFactor = 0.2f;
 
+    public float NextFightingTime
+    {
+        get { return _nextFightingTime; }
+    }
     private float _nextFightingTime = float.MaxValue;
-    public float NextFightingTime { get { return _nextFightingTime; } }
     private float _fightingTime = float.MinValue;
     protected GameManager() { } // guarantee this will be always a singleton only - can't use the constructor!
 
@@ -69,11 +72,14 @@ public class GameManager : Singleton<GameManager> {
         int thisPlayerIndex = 0;
         while (PlayerPrefs.HasKey("" + thisPlayerIndex++)) { }
         PlayerPrefs.SetInt("" + thisPlayerIndex, GetScore());
-
+        /*
         _gameOverText.text = "GAME OVER\nscore: " + GetScore();
         _gameOverText.gameObject.SetActive(true);
-
+        */
         State = GameState.GAME_OVER;
+
+        // Spawn panneau
+        SpawnScorePanel(GetScore(), true);
     }
 
     public int GetScore()
@@ -135,11 +141,16 @@ public class GameManager : Singleton<GameManager> {
 
         _difficulty += Time.deltaTime / (60 * 10f);
 
+        if (Input.GetKeyUp("g"))
+        {
+            GameOver(GetScore());
+        }
+
     }
 
     // vars for panel spawn
     public GameObject player;
-    public GameObject panelPrefab;
+    public GameObject panelPrefab, endPanelPrefab;
     public float corridorWidth = 16f;
     public float zOffset = 5f;
     public float startHeight = 30f;
@@ -147,16 +158,16 @@ public class GameManager : Singleton<GameManager> {
 
     public void NewScore(int s)
     {
-        Debug.LogWarning("NEW SCORE");
         // Display score panels
         if (s % 25 == 0 && s > 0 || s==66)
         {
-            SpawnScorePanel(s);
+            SpawnScorePanel(s, false);
         }
     }
 
-    public void SpawnScorePanel(int s)
+    public void SpawnScorePanel(int s, bool end = false)
     {
+        
         // Compute distance
         float distToTravelPanel = startHeight;
         float timeToTravel = distToTravelPanel / panelsSpeed; // seconds
@@ -166,11 +177,22 @@ public class GameManager : Singleton<GameManager> {
         // Compute initial position
         Vector3 sharkPos = new Vector3(0f, startHeight, distToTravelPlayer + newZ);
         // Spawn 
-        GameObject panelObj = GameObject.Instantiate(panelPrefab, sharkPos, Quaternion.identity);
-        float a = 30;
-        panelObj.transform.rotation = Quaternion.Euler(Random.Range(-a, a), Random.Range(-a, a), Random.Range(-a, a));
+        GameObject prefab = panelPrefab;
+        if(end)
+        {
+            prefab = endPanelPrefab;
+        }
+        GameObject panelObj = GameObject.Instantiate(prefab, sharkPos, Quaternion.identity);
+
         ScorePanel panel = panelObj.GetComponent<ScorePanel>();
         panel.speed = panelsSpeed;
         panel.SetScore(s);
+
+        if (!end)
+        {
+            float a = 15;
+            panelObj.transform.rotation = Quaternion.Euler(Random.Range(-a, a), Random.Range(-a, a), Random.Range(-a, a));
+        }
+        
     }
 }
