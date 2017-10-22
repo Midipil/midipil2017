@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &7700838
+--- !u!43 &299897996
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -494,7 +494,7 @@ MonoBehaviour:
   _gameOverText: {fileID: 1629517702}
   _musicSource: {fileID: 543419015}
   _musicTransitions: {fileID: 543419016}
-  _eatingMusic: {fileID: 0}
+  _eatingMusic: {fileID: 8300000, guid: 77a32265ff6183f4bbbc4547b40e60f5, type: 3}
   _fightingMusic: {fileID: 0}
   _transitionToFightingMusic: {fileID: 8300000, guid: 2d2ab94ef78eed3429df1837b6bc3ac4,
     type: 3}
@@ -837,12 +837,12 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 7700838}
+      objectReference: {fileID: 299897996}
     - target: {fileID: 23950594881450344, guid: e8bf1f79a7f50aa468eeb89e361c90d7,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1992130673}
+      objectReference: {fileID: 1988073863}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8bf1f79a7f50aa468eeb89e361c90d7, type: 2}
   m_IsPrefabParent: 0
@@ -950,7 +950,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 773b11ea41608cb42b95e56efa302914, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1992130673
+--- !u!21 &1988073863
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
