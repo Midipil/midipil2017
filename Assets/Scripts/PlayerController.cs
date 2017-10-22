@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private int hp = 1;
 
     // sounds
-    public float _minimumForceForSound = 1f;
+    public float _minimumForceForSound = 12.5f;
     public AudioClip[] _waterSounds;
     public AudioSource _leftWaterSound;
     public AudioSource _rightWaterSound;
@@ -144,7 +144,23 @@ public class PlayerController : MonoBehaviour
 
 		// apply
 		rb.MovePosition (new Vector3 (rb.position.x + force * Time.deltaTime, rb.position.y, rb.position.z));
-		//rb.AddForce(new Vector3(force, 0, 0));
+        //rb.AddForce(new Vector3(force, 0, 0));
+
+        if (Mathf.Abs(force) > _minimumForceForSound && !_rightWaterSound.isPlaying && !_leftWaterSound.isPlaying)
+        {
+            if (force > 0) // 
+            {
+                _rightWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
+                _rightWaterSound.volume = Mathf.Min(1f, force / 4f);
+                _rightWaterSound.Play();
+            }
+            else
+            {
+                _leftWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
+                _leftWaterSound.volume = Mathf.Min(1f, force / 4f);
+                _leftWaterSound.Play();
+            }     
+        }
 	}
 
 	private void ApplySpeed () {
