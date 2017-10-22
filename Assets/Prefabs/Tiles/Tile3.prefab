@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 65330871095155920}
   m_Layer: 0
   m_Name: GameObject (1)
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 136049866355225806}
   m_Layer: 0
   m_Name: default (1)
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 65225268796522844}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 136157708603584832}
   m_Layer: 0
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
