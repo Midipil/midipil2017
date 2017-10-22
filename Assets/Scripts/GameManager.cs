@@ -68,11 +68,14 @@ public class GameManager : Singleton<GameManager> {
         int thisPlayerIndex = 0;
         while (PlayerPrefs.HasKey("" + thisPlayerIndex++)) { }
         PlayerPrefs.SetInt("" + thisPlayerIndex, GetScore());
-
+        /*
         _gameOverText.text = "GAME OVER\nscore: " + GetScore();
         _gameOverText.gameObject.SetActive(true);
-
+        */
         State = GameState.GAME_OVER;
+
+        // Spawn panneau
+        SpawnScorePanel(GetScore(), endPanelPrefab);
     }
 
     public int GetScore()
@@ -134,11 +137,16 @@ public class GameManager : Singleton<GameManager> {
 
         _difficulty += Time.deltaTime / (60 * 10f);
 
+        if (Input.GetKeyUp("g"))
+        {
+            GameOver(GetScore());
+        }
+
     }
 
     // vars for panel spawn
     public GameObject player;
-    public GameObject panelPrefab;
+    public GameObject panelPrefab, endPanelPrefab;
     public float corridorWidth = 16f;
     public float zOffset = 5f;
     public float startHeight = 30f;
@@ -146,7 +154,6 @@ public class GameManager : Singleton<GameManager> {
 
     public void NewScore(int s)
     {
-        Debug.LogWarning("NEW SCORE");
         // Display score panels
         if (s % 25 == 0 && s > 0 || s==66)
         {
@@ -154,8 +161,9 @@ public class GameManager : Singleton<GameManager> {
         }
     }
 
-    public void SpawnScorePanel(int s)
+    public void SpawnScorePanel(int s, GameObject endPanel = null)
     {
+        
         // Compute distance
         float distToTravelPanel = startHeight;
         float timeToTravel = distToTravelPanel / panelsSpeed; // seconds
@@ -165,11 +173,23 @@ public class GameManager : Singleton<GameManager> {
         // Compute initial position
         Vector3 sharkPos = new Vector3(0f, startHeight, distToTravelPlayer + newZ);
         // Spawn 
-        GameObject panelObj = GameObject.Instantiate(panelPrefab, sharkPos, Quaternion.identity);
-        float a = 30;
-        panelObj.transform.rotation = Quaternion.Euler(Random.Range(-a, a), Random.Range(-a, a), Random.Range(-a, a));
+        GameObject prefab = panelPrefab;
+        if(endPanelPrefab != null)
+        {
+            Debug.Log(endPanel.name);
+            prefab = endPanelPrefab;
+        }
+        GameObject panelObj = GameObject.Instantiate(prefab, sharkPos, Quaternion.identity);
+
         ScorePanel panel = panelObj.GetComponent<ScorePanel>();
         panel.speed = panelsSpeed;
         panel.SetScore(s);
+
+        if (endPanel == null)
+        {
+            float a = 30;
+            panelObj.transform.rotation = Quaternion.Euler(Random.Range(-a, a), Random.Range(-a, a), Random.Range(-a, a));
+        }
+        
     }
 }
