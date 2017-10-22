@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("obstacle") || collision.CompareTag("shark"))
+        if ((collision.CompareTag("obstacle") && GameManager.Instance.State != GameManager.GameState.FIGHTING) || collision.CompareTag("shark"))
         {
             Hit();
         }
