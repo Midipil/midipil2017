@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(new Vector3(rb.position.x + force * Time.deltaTime, rb.position.y, rb.position.z));
         //rb.AddForce(new Vector3(force, 0, 0));
 
-        if (Mathf.Abs(force) > _minimumForceForSound)
+        if (Mathf.Abs(force) > _minimumForceForSound && !_rightWaterSound.isPlaying && !_leftWaterSound.isPlaying)
         {
             if (force > 0) // 
             {
