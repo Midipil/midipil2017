@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,9 +12,9 @@ public class GameManager : Singleton<GameManager> {
         private set;
     }
 
-    [SerializeField] private TextMesh _gameOverText;
     private SharkManager _sharkManager;
     private RayMouth _rayMouth;
+    private SteamVR_TrackedObject _rightDevice;
 
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _musicTransitions;
@@ -44,16 +45,22 @@ public class GameManager : Singleton<GameManager> {
         _rayMouth = FindObjectOfType<RayMouth>();
         GetGlobalVars();
 
+        _musicSource.loop = true;
+        _musicSource.clip = _eatingMusic;
+        _musicSource.Play();
+
         Reset();
     }
 
     private void Reset()
     {
+        _sharkManager = FindObjectOfType<SharkManager>();
+        _rayMouth = FindObjectOfType<RayMouth>();
+
         State = GameState.IDLE;
         _difficulty = 0f;
         _nextFightingTime = float.MaxValue;
         _fightingTime = float.MinValue;
-        _gameOverText.gameObject.SetActive(false);
     }
 
     private void GetGlobalVars()
@@ -68,18 +75,21 @@ public class GameManager : Singleton<GameManager> {
 
     public void GameOver(int score)
     {
-        // spawn the game over panel
-        int thisPlayerIndex = 0;
-        while (PlayerPrefs.HasKey("" + thisPlayerIndex++)) { }
-        PlayerPrefs.SetInt("" + thisPlayerIndex, GetScore());
-        /*
-        _gameOverText.text = "GAME OVER\nscore: " + GetScore();
-        _gameOverText.gameObject.SetActive(true);
-        */
-        State = GameState.GAME_OVER;
+        if (State != GameState.GAME_OVER)
+        {
+            // spawn the game over panel
+            int thisPlayerIndex = 0;
+            while (PlayerPrefs.HasKey("" + thisPlayerIndex++)) { }
+            PlayerPrefs.SetInt("" + thisPlayerIndex, GetScore());
+            /*
+            _gameOverText.text = "GAME OVER\nscore: " + GetScore();
+            _gameOverText.gameObject.SetActive(true);
+            */
+            State = GameState.GAME_OVER;
 
-        // Spawn panneau
-        SpawnScorePanel(GetScore(), true);
+            // Spawn panneau
+            SpawnScorePanel(GetScore(), true);
+        }
     }
 
     public int GetScore()
@@ -91,7 +101,12 @@ public class GameManager : Singleton<GameManager> {
     {
         GetGlobalVars();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(_rightDevice == null)
+        {
+            _rightDevice = FindObjectsOfType<SteamVR_TrackedObject>().FirstOrDefault(t => t.gameObject.name.ToLower() == "right");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) || SteamVR_Controller.Input((int)_rightDevice.index).GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
         {
             if(State == GameState.IDLE)
             {
@@ -101,7 +116,8 @@ public class GameManager : Singleton<GameManager> {
             }
             else if(State == GameState.GAME_OVER)
             {
-                SceneManager.LoadScene("Main Scene");
+                SceneManager.LoadScene("Main Scene", LoadSceneMode.Single);
+                Reset();
             }
         }
 
@@ -112,6 +128,8 @@ public class GameManager : Singleton<GameManager> {
             {
                 // shark attack
                 _musicTransitions.PlayOneShot(_transitionToFightingMusic);
+                _musicSource.clip = _fightingMusic;
+                _musicSource.Play();
 
                 _sharkManager.Start(_difficulty);
                 State = GameState.FIGHTING;
@@ -128,6 +146,8 @@ public class GameManager : Singleton<GameManager> {
             {
                 // end shark attack
                 _musicTransitions.PlayOneShot(_transitionToEatingMusic);
+                _musicSource.clip = _eatingMusic;
+                _musicSource.Play();
 
                 _sharkManager.Stop();
                 State = GameState.EATING;
@@ -149,7 +169,6 @@ public class GameManager : Singleton<GameManager> {
     }
 
     // vars for panel spawn
-    public GameObject player;
     public GameObject panelPrefab, endPanelPrefab;
     public float corridorWidth = 16f;
     public float zOffset = 5f;
@@ -167,11 +186,12 @@ public class GameManager : Singleton<GameManager> {
 
     public void SpawnScorePanel(int s, bool end = false)
     {
-        
+        var player = FindObjectOfType<PlayerController>();
+
         // Compute distance
         float distToTravelPanel = startHeight;
         float timeToTravel = distToTravelPanel / panelsSpeed; // seconds
-        float distToTravelPlayer = timeToTravel * player.GetComponent<PlayerController>().speedForce;
+        float distToTravelPlayer = timeToTravel * player.speedForce;
         // Random Z
         float newZ = player.transform.position.z + zOffset;
         // Compute initial position
