@@ -42,6 +42,8 @@ public class TileSpawner : MonoBehaviour {
 	void SpawnTile () {
 		int rand = Random.Range (0, tilesPrefab.Count);
 
+        //float timeFor
+
 		TileHandler tileH = MathUtilities.Draw (tilesPrefab);	
 
 		TileHandler tile = Instantiate (tileH);
