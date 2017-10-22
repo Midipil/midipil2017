@@ -55,10 +55,10 @@ public class SharkManager : MonoBehaviour {
 		float timeToTravel = distToTravelShark / speed; // seconds
 		float distToTravelPlayer = timeToTravel * player.GetComponent<Rigidbody> ().velocity.z;
 		// Random Z
-		float rand = Random.Range (-zRandom, zRandom);
+		float rand = Random.Range (0, zRandom);
 		float newZ = player.transform.position.z + (rand);
 		// Compute shark initial position
-		Vector3 sharkPos = new Vector3 (Random.Range (-corridorWidth / 2f, corridorWidth / 2f), startHeight, distToTravelPlayer + newZ);
+		Vector3 sharkPos = new Vector3 (Random.Range (-corridorWidth / 3f, corridorWidth / 3f), startHeight, distToTravelPlayer + newZ);
 		// Spawn shark
 		GameObject shark = GameObject.Instantiate (sharkPrefab, sharkPos, Quaternion.identity);
 		shark.GetComponent<Shark> ().speed = speed;

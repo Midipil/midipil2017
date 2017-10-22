@@ -141,7 +141,7 @@ public class GameManager : Singleton<GameManager> {
     public GameObject player;
     public GameObject panelPrefab;
     public float corridorWidth = 16f;
-    public float zOffset = 1.5f;
+    public float zOffset = 5f;
     public float startHeight = 30f;
     public float panelsSpeed = 10f;
 
@@ -149,7 +149,7 @@ public class GameManager : Singleton<GameManager> {
     {
         Debug.LogWarning("NEW SCORE");
         // Display score panels
-        if (s % 20 == 0 && s > 0)
+        if (s % 25 == 0 && s > 0 || s==66)
         {
             SpawnScorePanel(s);
         }
@@ -163,10 +163,12 @@ public class GameManager : Singleton<GameManager> {
         float distToTravelPlayer = timeToTravel * player.GetComponent<PlayerController>().speedForce;
         // Random Z
         float newZ = player.transform.position.z + zOffset;
-        // Compute shark initial position
+        // Compute initial position
         Vector3 sharkPos = new Vector3(0f, startHeight, distToTravelPlayer + newZ);
-        // Spawn shark
+        // Spawn 
         GameObject panelObj = GameObject.Instantiate(panelPrefab, sharkPos, Quaternion.identity);
+        float a = 30;
+        panelObj.transform.rotation = Quaternion.Euler(Random.Range(-a, a), Random.Range(-a, a), Random.Range(-a, a));
         ScorePanel panel = panelObj.GetComponent<ScorePanel>();
         panel.speed = panelsSpeed;
         panel.SetScore(s);
