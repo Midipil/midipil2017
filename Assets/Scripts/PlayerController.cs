@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Transform head, left, right;
     private Rigidbody rb;
     public BoxCollider mouthCollider, bodyCollider;
+    public GameObject rayModel;
     //Movement
     public float playerHeight = 1.5f;
     public float maxAngle = 45f;
@@ -88,6 +89,9 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(new Vector3(rb.position.x + 1.0f * Time.deltaTime, rb.position.y, rb.position.z));
         }
 
+        // Set ray rotation
+        rayModel.transform.localRotation = Quaternion.Euler(0f, 180f, angle);
+
         // Determine if we're face up or down
         if (angle < 90 && angle > -90)
         {
@@ -118,7 +122,8 @@ public class PlayerController : MonoBehaviour
 	public void CalibratePlayer () {
 		Vector3 difVec = new Vector3 (0, playerHeight, 0) - head.position;
 		this.transform.Find ("VR player").position += difVec;
-		Debug.Log ("dif vec : " + difVec);
+        // calibraie
+        rayModel.transform.position = new Vector3(head.position.x, head.position.y - 0.2f, head.position.z - 0.4f);
 	}
 
 	void ApplySteering (float angle, bool down) {

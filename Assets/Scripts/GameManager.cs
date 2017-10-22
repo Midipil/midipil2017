@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager> {
     private SharkManager _sharkManager;
     private RayMouth _rayMouth;
     private SteamVR_TrackedObject _rightDevice;
+    private SteamVR_TrackedObject _leftDevice;
 
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _musicTransitions;
@@ -101,12 +102,16 @@ public class GameManager : Singleton<GameManager> {
     {
         GetGlobalVars();
 
-        if(_rightDevice == null)
+        if (_leftDevice == null)
         {
-            _rightDevice = FindObjectsOfType<SteamVR_TrackedObject>().FirstOrDefault(t => t.gameObject.name.ToLower() == "right");
+            _leftDevice = FindObjectsOfType<SteamVR_TrackedObject>().FirstOrDefault(t => t.gameObject.name.ToLower().Contains("left"));
+        }
+        if (_rightDevice == null)
+        {
+            _rightDevice = FindObjectsOfType<SteamVR_TrackedObject>().FirstOrDefault(t => t.gameObject.name.ToLower().Contains("right"));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || (_rightDevice != null && SteamVR_Controller.Input((int)_rightDevice.index).GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger)))
+        if (Input.GetKeyDown(KeyCode.Space) || (_rightDevice != null && SteamVR_Controller.Input((int)_rightDevice.index).GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger)) || (_leftDevice != null && SteamVR_Controller.Input((int)_leftDevice.index).GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger)))
         {
             if(State == GameState.IDLE)
             {
