@@ -140,7 +140,7 @@ public class GameManager : Singleton<GameManager> {
     public GameObject player;
     public GameObject panelPrefab;
     public float corridorWidth = 16f;
-    public float zOffset = 1.5f;
+    public float zOffset = 5f;
     public float startHeight = 30f;
     public float panelsSpeed = 10f;
 
@@ -148,7 +148,7 @@ public class GameManager : Singleton<GameManager> {
     {
         Debug.LogWarning("NEW SCORE");
         // Display score panels
-        if (s % 20 == 0 && s > 0)
+        if (s % 50 == 0 && s > 0 || s==66)
         {
             SpawnScorePanel(s);
         }
