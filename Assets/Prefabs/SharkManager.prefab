@@ -54,12 +54,12 @@ MonoBehaviour:
   sharkPrefab: {fileID: 1945025193505530, guid: dd94e545b465f774ea3aeeaa3d46fb11,
     type: 2}
   corridorWidth: 16
-  zRandom: 1.5
+  zRandom: 1
   startHeight: 15
   speed: 5
   frequency: 4
   isAttacking: 0
   easySpeed: 5
   hardSpeed: 16
-  easyFreq: 4
+  easyFreq: 3
   hardFreq: 1
