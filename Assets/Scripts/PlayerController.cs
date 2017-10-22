@@ -146,20 +146,18 @@ public class PlayerController : MonoBehaviour
 		rb.MovePosition (new Vector3 (rb.position.x + force * Time.deltaTime, rb.position.y, rb.position.z));
         //rb.AddForce(new Vector3(force, 0, 0));
 
-        if (Mathf.Abs(force) > _minimumForceForSound && !_rightWaterSound.isPlaying && !_leftWaterSound.isPlaying)
+        if (Mathf.Abs(force) > _minimumForceForSound)
         {
-            if (force > 0) // 
+            if (!_rightWaterSound.isPlaying && !_leftWaterSound.isPlaying)
             {
                 _rightWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
-                _rightWaterSound.volume = Mathf.Min(1f, force / 4f);
+                _rightWaterSound.volume = Mathf.Min(0.2f, Mathf.Abs(force) / 6f);
                 _rightWaterSound.Play();
-            }
-            else
-            {
+
                 _leftWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
-                _leftWaterSound.volume = Mathf.Min(1f, force / 4f);
+                _leftWaterSound.volume = Mathf.Min(0.2f, Mathf.Abs(force) / 6f);
                 _leftWaterSound.Play();
-            }     
+            }
         }
 	}
 
@@ -225,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if ((collision.CompareTag("obstacle") && GameManager.Instance.State != GameManager.GameState.FIGHTING) || collision.CompareTag("shark"))
+        if ((collision.CompareTag("obstacle") && faceDown) || collision.CompareTag("shark"))
         {
             Hit();
         }

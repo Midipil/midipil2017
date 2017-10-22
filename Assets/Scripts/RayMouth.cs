@@ -44,10 +44,6 @@ public class RayMouth : MonoBehaviour {
             {
                 _collidedPlanctons.Add(collision.gameObject);
             }
-
-            _eatingPlanktonSound.volume = Random.Range(0f, MaxEatingSoundLvl);
-            _eatingPlanktonSound.clip = _eatingSounds[Random.Range(0, _eatingSounds.Length - 1)];
-            _eatingPlanktonSound.Play();
         }
     }
 
@@ -59,6 +55,13 @@ public class RayMouth : MonoBehaviour {
         if (mic.loudness > micThreshold || GlobalVars.Instance.voiceCheat)
         {
             Score += _collidedPlanctons.Count;
+
+            if (_collidedPlanctons.Count > 0)
+            {
+                _eatingPlanktonSound.volume = Random.Range(0f, MaxEatingSoundLvl);
+                _eatingPlanktonSound.clip = _eatingSounds[Random.Range(0, _eatingSounds.Length - 1)];
+                _eatingPlanktonSound.Play();
+            }
             
             //Debug.Log("Score = "+Score);
             foreach (var go in _collidedPlanctons)

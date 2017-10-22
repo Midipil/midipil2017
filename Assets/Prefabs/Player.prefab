@@ -710,7 +710,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0.8
+  Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -738,7 +738,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -756,7 +756,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -791,7 +791,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: -0.79
+  Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -819,7 +819,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -837,7 +837,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -918,7 +918,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mic: {fileID: 0}
   micThreshold: 0.5
-  MaxEatingSoundLvl: 0.3
+  MaxEatingSoundLvl: 0.2
   _eatingSounds:
   - {fileID: 8300000, guid: 6415bd06f0c95bc4595f45f42c77d82d, type: 3}
   - {fileID: 8300000, guid: d78259b4d75c33b4085afb86da0a3ffe, type: 3}

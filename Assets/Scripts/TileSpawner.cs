@@ -72,7 +72,7 @@ public class TileSpawner : MonoBehaviour {
                 tileH = MathUtilities.Draw(tilesPrefab);
         }
         else
-            tileH = MathUtilities.Draw(tilesPrefab);
+            tileH = MathUtilities.Draw(tilesPrefab.Where(t => t.IsOkayWithSharks).ToList());
 
 		TileHandler tile = Instantiate (tileH);
 

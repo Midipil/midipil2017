@@ -26,7 +26,7 @@ public class MaterialOffset : MonoBehaviour {
 	void Update () {
 		if (player != null) {
 			Material mat = GetComponent<Renderer> ().material;
-			mat.mainTextureOffset = new Vector2 (wavesAmplitude * Mathf.Sin (Time.time * wavesSpeed), wavesAmplitude * Mathf.Sin (Time.time * wavesSpeed) + player.transform.position.z / mat.mainTextureScale.y * transform.localScale.z);
+			mat.mainTextureOffset = new Vector2 (wavesAmplitude * Mathf.Sin (Time.time * wavesSpeed) - player.transform.position.x / mat.mainTextureScale.x * transform.localScale.x, wavesAmplitude * Mathf.Sin (Time.time * wavesSpeed) + player.transform.position.z / mat.mainTextureScale.y * transform.localScale.z);
 		}
 	}
 }
