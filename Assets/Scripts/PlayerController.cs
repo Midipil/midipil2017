@@ -59,9 +59,17 @@ public class PlayerController : MonoBehaviour {
         {
             Debug.Log("angle : " + angle );
         }
+        if (Input.GetKey("a"))
+        {
+            rb.MovePosition(new Vector3(rb.position.x + -1.0f * Time.deltaTime, rb.position.y, rb.position.z));
+        }
+        if (Input.GetKey("z"))
+        {
+            rb.MovePosition(new Vector3(rb.position.x + 1.0f * Time.deltaTime, rb.position.y, rb.position.z));
+        }
 
         // Determine if we're face up or down
-        if(angle < 90 && angle > -90)
+        if (angle < 90 && angle > -90)
         {
             faceDown = true;
         } else
@@ -89,7 +97,7 @@ public class PlayerController : MonoBehaviour {
     public void CalibratePlayer()
     {
         Vector3 difVec = new Vector3(0, playerHeight, 0) - head.position;
-        this.transform.Find("VR player").position = difVec;
+        this.transform.Find("VR player").position += difVec;
         Debug.Log("dif vec : " + difVec);
     }
 
@@ -108,13 +116,14 @@ public class PlayerController : MonoBehaviour {
         // Compute force
         float force = angle * maxSteeringSpeed / maxAngle;
         // apply
-        rb.AddForce(new Vector3(force, 0, 0));
+        rb.MovePosition(new Vector3(rb.position.x + force * Time.deltaTime, rb.position.y, rb.position.z));
+        //rb.AddForce(new Vector3(force, 0, 0));
     }
 
     private void ApplySpeed()
     {
-        rb.AddForce(new Vector3(0, 0, speedForce));
-        //rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speed*Time.deltaTime));
+        //rb.AddForce(new Vector3(0, 0, speedForce));
+        rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.z + speedForce*Time.deltaTime));
     }
 
     public float GetAngle()
@@ -145,7 +154,7 @@ public class PlayerController : MonoBehaviour {
     private void GameOver()
     {
         Debug.LogError("GAME OVER");
-        // GameManager.Instance.GameOver();
+        GameManager.Instance.GameOver(GetComponentInChildren<RayMouth>().Score);
     }
 
     IEnumerator Rumble(float length, float strength)
@@ -158,7 +167,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "obstacle" || collision.tag == "shark")
         {

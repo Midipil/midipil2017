@@ -13,6 +13,14 @@ public class GameManager : Singleton<GameManager> {
 
     [SerializeField] private TextMesh _gameOverText;
     private SharkManager _sharkManager;
+    private RayMouth _rayMouth;
+
+    [SerializeField] private AudioSource _musicSource;
+    [SerializeField] private AudioSource _musicTransitions;
+    [SerializeField] private AudioClip _eatingMusic;
+    [SerializeField] private AudioClip _fightingMusic;
+    [SerializeField] private AudioClip _transitionToFightingMusic;
+    [SerializeField] private AudioClip _transitionToEatingMusic;
 
     private float _difficulty = 0f;
     private float _completeDifficultyCompletionTime = 0f;
@@ -29,6 +37,7 @@ public class GameManager : Singleton<GameManager> {
     private void Start()
     {
         _sharkManager = FindObjectOfType<SharkManager>();
+        _rayMouth = FindObjectOfType<RayMouth>();
         GetGlobalVars();
 
         Reset();
@@ -58,12 +67,17 @@ public class GameManager : Singleton<GameManager> {
         // spawn the game over panel
         int thisPlayerIndex = 0;
         while (PlayerPrefs.HasKey("" + thisPlayerIndex++)) { }
-        PlayerPrefs.SetInt("" + thisPlayerIndex, score);
+        PlayerPrefs.SetInt("" + thisPlayerIndex, GetScore());
 
-        _gameOverText.text = "GAME OVER\nscore: " + score;
+        _gameOverText.text = "GAME OVER\nscore: " + GetScore();
         _gameOverText.gameObject.SetActive(true);
 
         State = GameState.GAME_OVER;
+    }
+
+    public int GetScore()
+    {
+        return _rayMouth.Score;
     }
 
     private void Update()
@@ -90,6 +104,8 @@ public class GameManager : Singleton<GameManager> {
             if(_nextFightingTime <= 0f)
             {
                 // shark attack
+                _musicTransitions.PlayOneShot(_transitionToFightingMusic);
+
                 _sharkManager.Start(_difficulty);
                 State = GameState.FIGHTING;
                 _fightingTime = Mathf.Lerp(_easyFightingTime, _hardFightingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor,1f + _timingRandomnessFactor);
@@ -104,6 +120,8 @@ public class GameManager : Singleton<GameManager> {
             if(_fightingTime <= 0f)
             {
                 // end shark attack
+                _musicTransitions.PlayOneShot(_transitionToEatingMusic);
+
                 _sharkManager.Stop();
                 State = GameState.EATING;
                 _nextFightingTime = Mathf.Lerp(_easyEatingTime, _hardEatingTime, _difficulty) * Random.Range(1f - _timingRandomnessFactor, 1f + _timingRandomnessFactor);
@@ -115,5 +133,36 @@ public class GameManager : Singleton<GameManager> {
         }
 
         _difficulty += Time.deltaTime / (60 * 10f);
+
+        // Display score panels
+        if(GetScore() % 20 == 0)
+        {
+            SpawnScorePanel(GetScore());
+        }
+    }
+
+    // vars for panel spawn
+    public GameObject player;
+    public GameObject panelPrefab;
+    public float corridorWidth = 16f;
+    public float zOffset = 1.5f;
+    public float startHeight = 30f;
+    public float speed = 1f;
+
+    public void SpawnScorePanel(int s)
+    {
+        // Compute distance
+        float distToTravelPanel = startHeight;
+        float timeToTravel = distToTravelPanel / speed; // seconds
+        float distToTravelPlayer = timeToTravel * player.GetComponent<PlayerController>().speedForce;
+        // Random Z
+        float newZ = player.transform.position.z + zOffset;
+        // Compute shark initial position
+        Vector3 sharkPos = new Vector3(0f, startHeight, distToTravelPlayer + newZ);
+        // Spawn shark
+        GameObject panelObj = GameObject.Instantiate(panelPrefab, sharkPos, Quaternion.identity);
+        ScorePanel panel = panelObj.GetComponent<ScorePanel>();
+        panel.speed = speed;
+        panel.SetScore(s);
     }
 }

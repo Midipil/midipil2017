@@ -10,7 +10,7 @@ public class RayMouth : MonoBehaviour {
     public MicrophoneInput mic;
     public float micThreshold = 0.5f;
     
-    public float Score
+    public int Score
     {
         get;
         private set;
@@ -22,7 +22,7 @@ public class RayMouth : MonoBehaviour {
     void Start ()
     {
         GetGlobalVars();
-        Score = 0f;
+        Score = 0;
         _collidedPlanctons.Clear();
 	}
 
@@ -48,7 +48,7 @@ public class RayMouth : MonoBehaviour {
         GetGlobalVars();
 
         // To later replace with the sound detection
-        if (mic.loudness > micThreshold)
+        if (mic.loudness > micThreshold || GlobalVars.Instance.voiceCheat)
         {
             //Debug.Log("Loud enough to eat");
             Score += _collidedPlanctons.Count;
