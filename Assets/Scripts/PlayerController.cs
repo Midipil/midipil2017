@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Transform head, left, right;
     private Rigidbody rb;
     public BoxCollider mouthCollider, bodyCollider;
+    public GameObject rayModel;
     //Movement
     public float playerHeight = 1.5f;
     public float maxAngle = 45f;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private int hp = 1;
 
     // sounds
-    public float _minimumForceForSound = 1f;
+    public float _minimumForceForSound = 12.5f;
     public AudioClip[] _waterSounds;
     public AudioSource _leftWaterSound;
     public AudioSource _rightWaterSound;
@@ -88,6 +89,9 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(new Vector3(rb.position.x + 1.0f * Time.deltaTime, rb.position.y, rb.position.z));
         }
 
+        // Set ray rotation
+        rayModel.transform.localRotation = Quaternion.Euler(0f, 180f, angle);
+
         // Determine if we're face up or down
         if (angle < 90 && angle > -90)
         {
@@ -118,7 +122,8 @@ public class PlayerController : MonoBehaviour
 	public void CalibratePlayer () {
 		Vector3 difVec = new Vector3 (0, playerHeight, 0) - head.position;
 		this.transform.Find ("VR player").position += difVec;
-		Debug.Log ("dif vec : " + difVec);
+        // calibraie
+        rayModel.transform.position = new Vector3(head.position.x, head.position.y - 0.25f, head.position.z - 0.3f);
 	}
 
 	void ApplySteering (float angle, bool down) {
@@ -139,7 +144,23 @@ public class PlayerController : MonoBehaviour
 
 		// apply
 		rb.MovePosition (new Vector3 (rb.position.x + force * Time.deltaTime, rb.position.y, rb.position.z));
-		//rb.AddForce(new Vector3(force, 0, 0));
+        //rb.AddForce(new Vector3(force, 0, 0));
+
+        if (Mathf.Abs(force) > _minimumForceForSound && !_rightWaterSound.isPlaying && !_leftWaterSound.isPlaying)
+        {
+            if (force > 0) // 
+            {
+                _rightWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
+                _rightWaterSound.volume = Mathf.Min(1f, force / 4f);
+                _rightWaterSound.Play();
+            }
+            else
+            {
+                _leftWaterSound.clip = _waterSounds[Random.Range(0, _waterSounds.Length - 1)];
+                _leftWaterSound.volume = Mathf.Min(1f, force / 4f);
+                _leftWaterSound.Play();
+            }     
+        }
 	}
 
 	private void ApplySpeed () {
@@ -204,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("obstacle") || collision.CompareTag("shark"))
+        if ((collision.CompareTag("obstacle") && GameManager.Instance.State != GameManager.GameState.FIGHTING) || collision.CompareTag("shark"))
         {
             Hit();
         }
