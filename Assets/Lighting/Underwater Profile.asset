@@ -127,10 +127,10 @@ MonoBehaviour:
         saturation: 1.21
         contrast: 1.057
       channelMixer:
-        red: {x: 1.13, y: -0.02, z: -0.06}
-        green: {x: 0.15, y: 0.71, z: 0.19}
+        red: {x: 0.96, y: 0.13, z: 0.02}
+        green: {x: 0.23, y: 0.71, z: 0.21}
         blue: {x: 0.05, y: 0.18, z: 0.73}
-        currentEditingChannel: 2
+        currentEditingChannel: 1
       colorWheels:
         mode: 1
         log:

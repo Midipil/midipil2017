@@ -30,6 +30,10 @@ public class GameManager : Singleton<GameManager> {
     private float _hardFightingTime = 10f;
     private float _timingRandomnessFactor = 0.2f;
 
+    public float NextFightingTime
+    {
+        get { return _nextFightingTime; }
+    }
     private float _nextFightingTime = float.MaxValue;
     private float _fightingTime = float.MinValue;
     protected GameManager() { } // guarantee this will be always a singleton only - can't use the constructor!
@@ -75,7 +79,7 @@ public class GameManager : Singleton<GameManager> {
         State = GameState.GAME_OVER;
 
         // Spawn panneau
-        SpawnScorePanel(GetScore(), endPanelPrefab);
+        SpawnScorePanel(GetScore(), true);
     }
 
     public int GetScore()
@@ -157,11 +161,11 @@ public class GameManager : Singleton<GameManager> {
         // Display score panels
         if (s % 25 == 0 && s > 0 || s==66)
         {
-            SpawnScorePanel(s);
+            SpawnScorePanel(s, false);
         }
     }
 
-    public void SpawnScorePanel(int s, GameObject endPanel = null)
+    public void SpawnScorePanel(int s, bool end = false)
     {
         
         // Compute distance
@@ -174,9 +178,8 @@ public class GameManager : Singleton<GameManager> {
         Vector3 sharkPos = new Vector3(0f, startHeight, distToTravelPlayer + newZ);
         // Spawn 
         GameObject prefab = panelPrefab;
-        if(endPanelPrefab != null)
+        if(end)
         {
-            Debug.Log(endPanel.name);
             prefab = endPanelPrefab;
         }
         GameObject panelObj = GameObject.Instantiate(prefab, sharkPos, Quaternion.identity);
@@ -185,9 +188,9 @@ public class GameManager : Singleton<GameManager> {
         panel.speed = panelsSpeed;
         panel.SetScore(s);
 
-        if (endPanel == null)
+        if (!end)
         {
-            float a = 30;
+            float a = 15;
             panelObj.transform.rotation = Quaternion.Euler(Random.Range(-a, a), Random.Range(-a, a), Random.Range(-a, a));
         }
         

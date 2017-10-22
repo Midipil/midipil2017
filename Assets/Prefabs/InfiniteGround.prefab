@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 64020298582535826}
   - component: {fileID: 23825140575559542}
   - component: {fileID: 114495635102562044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InfiniteGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}

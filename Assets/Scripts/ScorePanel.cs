@@ -22,7 +22,7 @@ public class ScorePanel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.transform.position.y > 0) {
-			this.transform.Translate (new Vector3 (0f, -speed * Time.deltaTime, 0f));
+			this.transform.Translate (new Vector3 (0f, -speed * Time.deltaTime, 0f), Space.World);
 		} else {
 			if (!hitGround) {
 				hitGround = true;
