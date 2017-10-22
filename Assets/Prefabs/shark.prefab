@@ -520,12 +520,13 @@ AudioSource:
   m_GameObject: {fileID: 1945025193505530}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243550669109924360, guid: 697916193debbc5489c5f4cf73744ada,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -625,8 +626,11 @@ MonoBehaviour:
   bubbles: {fileID: 198096540965696316}
   dustOnGroundHit: {fileID: 198496614958882814}
   sndClips:
-  - {fileID: 8300000, guid: 58211ad266db44ef2bcf549a19a1cfaa, type: 3}
-  - {fileID: 8300000, guid: 04e969ed2ca304ea08ba86d89db1bb62, type: 3}
+  - {fileID: 8300000, guid: 14ced86a51f988e42aa3e4f212b66c0f, type: 3}
+  - {fileID: 8300000, guid: 16ff431d1b5892a41b18baba14e87668, type: 3}
+  - {fileID: 8300000, guid: 18180592774dd2e43a95d19e18f00329, type: 3}
+  - {fileID: 8300000, guid: e20ccb56bb5e5e64abe3a0a2cf30eaaf, type: 3}
+  HitGroundSound: {fileID: 8300000, guid: 0e220b97baa73db4fab6fba879e1b024, type: 3}
 --- !u!136 &136700807717695780
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -636,7 +640,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

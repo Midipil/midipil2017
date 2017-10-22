@@ -106,7 +106,7 @@ public class GameManager : Singleton<GameManager> {
             _rightDevice = FindObjectsOfType<SteamVR_TrackedObject>().FirstOrDefault(t => t.gameObject.name.ToLower() == "right");
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || SteamVR_Controller.Input((int)_rightDevice.index).GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))
+        if (Input.GetKeyDown(KeyCode.Space) || (_rightDevice != null && SteamVR_Controller.Input((int)_rightDevice.index).GetPressDown(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger)))
         {
             if(State == GameState.IDLE)
             {

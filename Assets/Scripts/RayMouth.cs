@@ -9,7 +9,11 @@ public class RayMouth : MonoBehaviour {
 
     public MicrophoneInput mic;
     public float micThreshold = 0.5f;
-    
+
+    public float MaxEatingSoundLvl = 0.5f;
+    public AudioClip[] _eatingSounds;
+    public AudioSource _eatingPlanktonSound;
+
     public int Score
     {
         get;
@@ -40,6 +44,10 @@ public class RayMouth : MonoBehaviour {
             {
                 _collidedPlanctons.Add(collision.gameObject);
             }
+
+            _eatingPlanktonSound.volume = Random.Range(0f, MaxEatingSoundLvl);
+            _eatingPlanktonSound.clip = _eatingSounds[Random.Range(0, _eatingSounds.Length - 1)];
+            _eatingPlanktonSound.Play();
         }
     }
 
