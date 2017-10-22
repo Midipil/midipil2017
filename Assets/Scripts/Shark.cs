@@ -14,6 +14,7 @@ public class Shark : MonoBehaviour {
 	AudioSource audioSource;
 	private bool hitGround = false;
 	float time;
+    private float groundHeight = 0f;
 	// Use this for initialization
 	void Start () {
 		dustOnGroundHit.Stop ();
@@ -23,7 +24,7 @@ public class Shark : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (this.transform.position.y > 0) {
+		if (this.transform.position.y > groundHeight) {
 			this.transform.Translate (new Vector3 (0f, -speed * Time.deltaTime, 0f));
 
             if(this.transform.position.y / speed <= audioSource.clip.length / 2f && !audioSource.isPlaying)
