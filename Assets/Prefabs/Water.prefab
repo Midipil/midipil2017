@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33857112172994520}
   - component: {fileID: 64500740282153806}
   - component: {fileID: 23257686278241944}
-  - component: {fileID: 114748646169804810}
+  - component: {fileID: 114475004966443794}
   m_Layer: 4
   m_Name: InfiniteGround (1)
   m_TagString: Untagged
@@ -383,17 +383,19 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 14d8f0e2d433c6b4099561bf96c6305b, type: 3}
   - {fileID: 2800000, guid: 6f01296433e925d409349376b9377fc4, type: 3}
   fps: 120
---- !u!114 &114748646169804810
+--- !u!114 &114475004966443794
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1161748145803568}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1036fd9e2d8b3148a20f3ff21f75e5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b149aa62df1d1c488b53d3d89e8fa9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wavesSpeed: 1
+  wavesAmplitude: 0.02
 --- !u!114 &114809482995001888
 MonoBehaviour:
   m_ObjectHideFlags: 1
