@@ -34,7 +34,7 @@ public class RayMouth : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.tag == "plancton")
+        if(collision.CompareTag("plancton"))
         {
             if(!_collidedPlanctons.Any(c => object.ReferenceEquals(collision.gameObject, c))) 
             {
@@ -52,7 +52,7 @@ public class RayMouth : MonoBehaviour {
         {
             Score += _collidedPlanctons.Count;
             
-            Debug.Log("Score = "+Score);
+            //Debug.Log("Score = "+Score);
             foreach (var go in _collidedPlanctons)
             {
                 GameManager.Instance.NewScore(Score);
@@ -64,7 +64,7 @@ public class RayMouth : MonoBehaviour {
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.tag == "plancton")
+        if (collision.CompareTag("plancton"))
         {
             var idToDelete = _collidedPlanctons.Select((c, idx) => new { c, idx }).FirstOrDefault(o => object.ReferenceEquals(o.c, collision.gameObject));
             if (idToDelete != null) _collidedPlanctons.RemoveAt(idToDelete.idx);

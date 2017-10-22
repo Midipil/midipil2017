@@ -26,7 +26,7 @@ public class TileHandler : MonoBehaviour {
         _tile = gameObject;
         _prevTile = prevTile;
 
-        Balises = _tile.GetComponentsInChildren<Transform>().Where(t => t.gameObject.tag == "balise").Select(t => t.position).OrderBy(p => p.z).ToArray();
+        Balises = _tile.GetComponentsInChildren<Transform>().Where(t => t.gameObject.CompareTag("balise")).Select(t => t.position).OrderBy(p => p.z).ToArray();
 
         // generate the plancton, interpolating the path from the previous tile
         var controlPoints = new List<Vector3>();
