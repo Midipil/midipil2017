@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 114923891968195344, guid: 36789b078d9a27f4b8029a48b437ac9d, type: 2}
   - {fileID: 114691830344293764, guid: fe2bb9526dea12f46bd7dad4bea08de8, type: 2}
   - {fileID: 114534269253134820, guid: 9675baaa56aa6164596b0ca96fe8430c, type: 2}
-  tilesObj: []
   tileSize: 31.92
   frontView: 100
   backView: 100
+  sideTile: {fileID: 1752318619995996, guid: cbc2a1367f4b046c99505f465a1867a2, type: 2}
