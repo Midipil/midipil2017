@@ -50,11 +50,14 @@ public class RayMouth : MonoBehaviour {
         // To later replace with the sound detection
         if (mic.loudness > micThreshold || GlobalVars.Instance.voiceCheat)
         {
-            //Debug.Log("Loud enough to eat");
             Score += _collidedPlanctons.Count;
-
-            foreach (var go in _collidedPlanctons) Destroy(go);
-
+            
+            Debug.Log("Score = "+Score);
+            foreach (var go in _collidedPlanctons)
+            {
+                GameManager.Instance.NewScore(Score);
+                Destroy(go);
+            }
             _collidedPlanctons.Clear();
         }
     }
