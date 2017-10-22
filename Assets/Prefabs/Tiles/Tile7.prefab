@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9c2a2f3ed838546b3eff3034e3543c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weight: 1
+  _weight: 0.4
   IsOkayWithSharks: 0
   _planctonPrefab: {fileID: 1056061484688912, guid: 641e6c059e97f4f44a2739e3c8dc4603,
     type: 2}
