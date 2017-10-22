@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	// Health points
 	private int hp = 1;
 
+<<<<<<< HEAD
     // sounds
     public float _minimumForceForSound = 1f;
     public AudioClip[] _waterSounds;
@@ -23,6 +24,9 @@ public class PlayerController : MonoBehaviour {
     public AudioSource _rightWaterSound;
 
 	public float widthLimit = 16;
+=======
+	public float widthLimit = 4;
+>>>>>>> 2cdd59b3d1ada1f346e78e9b8390566da638e5d1
 
     private float _decceleratorDividor = 1f;
 
@@ -120,7 +124,7 @@ public class PlayerController : MonoBehaviour {
 		// Compute force
 		float force = angle * maxSteeringSpeed / maxAngle;
 
-		if (this.transform.position.x < widthLimit && force < 0 ||
+		if (this.transform.position.x < -widthLimit && force < 0 ||
 		    this.transform.position.x > widthLimit && force > 0) {
 			return;
 		}
