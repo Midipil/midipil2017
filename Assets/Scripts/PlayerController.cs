@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	// Health points
 	private int hp = 1;
 
-	public float widthLimit = 4;
+	public float widthLimit = 16;
 
     private float _decceleratorDividor = 1f;
 
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour {
 		// Compute force
 		float force = angle * maxSteeringSpeed / maxAngle;
 
-		if (this.transform.position.x < -widthLimit && force < 0 ||
+		if (this.transform.position.x < widthLimit && force < 0 ||
 		    this.transform.position.x > widthLimit && force > 0) {
 			return;
 		}
