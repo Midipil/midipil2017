@@ -33,3 +33,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Assets/Scenes/Main Scene.unity
+Assets/Scripts/PlayerController.cs
+Assets/Scripts/PlayerController.cs
