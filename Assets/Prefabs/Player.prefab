@@ -212,7 +212,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1789081704903630
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -235,7 +235,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4788288712981644}
   - {fileID: 4382662690799286}
   - {fileID: 4730736837764928}
   - {fileID: 4788424830413466}
@@ -293,7 +292,7 @@ Transform:
   m_Children:
   - {fileID: 4066364476129060}
   m_Father: {fileID: 4010933382664558}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4402085946281118
 Transform:
@@ -320,6 +319,7 @@ Transform:
   m_Children:
   - {fileID: 4010933382664558}
   - {fileID: 4402085946281118}
+  - {fileID: 4788288712981644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -348,7 +348,7 @@ Transform:
   m_Children:
   - {fileID: 4136805470911882}
   m_Father: {fileID: 4010933382664558}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4788288712981644
 Transform:
@@ -356,13 +356,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789081704903630}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4932536305209038}
-  m_Father: {fileID: 4010933382664558}
-  m_RootOrder: 0
+  m_Father: {fileID: 4436093579210226}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4788424830413466
 Transform:
@@ -377,7 +377,7 @@ Transform:
   - {fileID: 4645909452201224}
   - {fileID: 4373022690966968}
   m_Father: {fileID: 4010933382664558}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4932536305209038
 Transform:
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   maxAngle: 45
   maxSteeringSpeed: 1
   speedForce: 3
-  _minimumForceForSound: 1
+  _minimumForceForSound: 0.1
   _waterSounds:
   - {fileID: 8300000, guid: acf211a8d8614a548870ac837bdcfc95, type: 3}
   - {fileID: 8300000, guid: b0f6c07b2617b2548b915a015930f969, type: 3}

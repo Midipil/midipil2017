@@ -120,6 +120,10 @@ public class PlayerController : MonoBehaviour
 	}
 
 	public void CalibratePlayer () {
+		// rotate
+		float headRot = head.rotation.eulerAngles.y;
+		this.transform.Find("VR player").Rotate(new Vector3(0f, -headRot, 0f));
+		// position
 		Vector3 difVec = new Vector3 (0, playerHeight, 0) - head.position;
 		this.transform.Find ("VR player").position += difVec;
         // calibraie
